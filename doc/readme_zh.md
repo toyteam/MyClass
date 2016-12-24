@@ -1,5 +1,5 @@
 ﻿# 班级管理系统
-###苏州大学 计算机科学与技术学院 软件工程专业
+###苏州大学 计算机科学与技术学院 软件工程嵌入式专业
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
