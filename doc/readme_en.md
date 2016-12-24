@@ -9,6 +9,7 @@
 ##Introduction
 Class management system is a web-based, quick and easy system for management of class transactions. It uses the php language, laravel background, adminlte front-end development framework. The system has many functions, such as discussion of problems, data statistics, collection of fees, announcement, voting and document sharing, which greatly facilitates the communication between students and the handling of relevant class transactions.
 
+
 ## How to use
 Click [here]()。
 
