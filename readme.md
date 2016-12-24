@@ -1,4 +1,4 @@
-# Software Engineering, CS College, SooChou University class management system
+﻿# Software Engineering, CS College, SooChou University class management system
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
@@ -11,8 +11,8 @@ Class management system is a web-based, quick and easy system for management of 
 
 
 ##Language
-  *[English]()
-  *[中文]()
+  *[English](https://github.com/toyteam/MyClass/blob/master/doc/readme_en.md)</br>
+  *[中文](https://github.com/toyteam/MyClass/blob/master/doc/readme_zh.md)</br>
 
 ## Official Documentation
 

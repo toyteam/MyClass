@@ -11,8 +11,8 @@ Class management system is a web-based, quick and easy system for management of 
 
 
 ##Language
-  *[English]()
-  *[中文]()
+  *[English](https://github.com/toyteam/MyClass/blob/master/doc/readme_en.md)</br>
+  *[中文](https://github.com/toyteam/MyClass/blob/master/doc/readme_zh.md)</br>
 
 ## Official Documentation
 

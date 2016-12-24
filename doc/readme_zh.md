@@ -1,4 +1,4 @@
-# 班级管理系统
+﻿# 班级管理系统
 ###苏州大学 计算机科学与技术学院 软件工程专业
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
@@ -12,8 +12,8 @@
 
 
 ## 语言
-  *[English]()
-  *[中文]()
+  *[English](https://github.com/toyteam/MyClass/blob/master/doc/readme_en.md)</br>
+  *[中文](https://github.com/toyteam/MyClass/blob/master/doc/readme_zh.md)</br>
 
 ## 使用
 点击此处即可进入该系统[班级管理]()。
