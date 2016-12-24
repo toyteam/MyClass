@@ -41,7 +41,11 @@ class Kernel extends HttpKernel
         
         'isnotlogin' =>[
             \App\Http\Middleware\IsNotLogin::class,
-        ]
+        ],
+
+        'isadmin' =>[
+            \App\Http\Middleware\IsAdmin::class,
+        ],
     ];
 
     /**

@@ -119,9 +119,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li id="budget"><a href="#"><i class="fa fa-circle-o"></i>班费公示</a></li>
-                <li id="fund"><a href="{{url('life/fund')}}"><i class="fa fa-circle-o"></i>缴纳班费</a></li>
-                <li id="form"><a href="{{url('life/form')}}"><i class="fa fa-circle-o"></i>填写表格</a></li>
+                <li id="life_budget"><a href="#"><i class="fa fa-circle-o"></i>班费公示</a></li>
+                <li id="life_fund"><a href="{{url('life/fund')}}"><i class="fa fa-circle-o"></i>缴纳班费</a></li>
+                <li id="life_form"><a href="{{url('life/form')}}"><i class="fa fa-circle-o"></i>填写表格</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -152,8 +152,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i>信息查看</a></li>
-                <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i>信息修改</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i>信息查看</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i>信息修改</a></li>
               </ul>
             </li>
 
@@ -163,10 +163,11 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i>班费管理</a></li>
-                <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i>表格管理</a></li>
-                <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i>资料管理</a></li>
-                <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i>人员管理</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i>班费管理</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i>表格管理</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i>资料管理</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i>人员管理</a></li>
+                <li id="manage_notice"><a href="{{ url('manage/notice') }}"><i class="fa fa-circle-o"></i>通知管理</a></li>
               </ul>
             </li>
             

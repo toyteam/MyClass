@@ -40,18 +40,26 @@ Route::group(['middleware' => ['web']], function () {
 	    	Route::get('/welcome','Welcome@index');
 	    	Route::get('/logout','Welcome@logout');
 
-	    	//life
+	    	// life
 	    	Route::get('/life/fund', 'Welcome@life_fund');
 	    	Route::get('/life/form', 'Welcome@life_form');
 
 	    	// manage
-	    	Route::get('/manage', 'Manage@index');
-	    	Route::get('/manage/viewAll', 'Manage@getAllInfo');
-	    	Route::get('/manage/whoNotFill', 'Manage@getWhoNotFill');
-	    	Route::get('/manage/event', 'Manage@event');
-	    	Route::get('/manage/event_add', 'Manage@event_add');
-	    	Route::post('/manage/event_add', 'Manage@event_add_check');
-	    	Route::get('/manage/delete/{id}', 'Manage@event_delete');
+	    	Route::group(['middleware' => 'isadmin'], function(){
+
+	    		Route::get('/manage/notice', 'Welcome@manage_notice');
+
+	    	} );
+	    	
+	    	// deprecated
+
+	    	// Route::get('/manage', 'Manage@index');
+	    	// Route::get('/manage/viewAll', 'Manage@getAllInfo');
+	    	// Route::get('/manage/whoNotFill', 'Manage@getWhoNotFill');
+	    	// Route::get('/manage/event', 'Manage@event');
+	    	// Route::get('/manage/event_add', 'Manage@event_add');
+	    	// Route::post('/manage/event_add', 'Manage@event_add_check');
+	    	// Route::get('/manage/delete/{id}', 'Manage@event_delete');
 	});
 
 });
