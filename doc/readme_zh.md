@@ -15,8 +15,11 @@
   *[English](https://github.com/toyteam/MyClass/blob/master/doc/readme_en.md)</br>
   *[中文](https://github.com/toyteam/MyClass/blob/master/doc/readme_zh.md)</br>
 
+## 安装
+首先，将laravel框架下载到Apache或Nginx的根目录中。 然后pull代码到该目录。最后，就可以访问这个网站了。
+
 ## 使用
-点击此处即可进入该系统[班级管理]()。
+点击此处即可进入该系统[班级管理(demo)](http://creative.wicp.net)。
 
 ## 官方文档
 

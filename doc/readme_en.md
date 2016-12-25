@@ -9,9 +9,12 @@
 ##Introduction
 Class management system is a web-based, quick and easy system for management of class transactions. It uses the php language, laravel background, adminlte front-end development framework. The system has many functions, such as discussion of problems, data statistics, collection of fees, announcement, voting and document sharing, which greatly facilitates the communication between students and the handling of relevant class transactions.
 
+## How to install
+Firstly, download the laravel framework to a directory, which is the document root of Apache or Nginx. Then pull the source to the directory.Lastly, let's play. 
+
 
 ## How to use
-Click [here]()。
+Click [here(demo)](http://creative.wicp.net)。
 
 ##Language
   *[English](https://github.com/toyteam/MyClass/blob/master/doc/readme_en.md)</br>
