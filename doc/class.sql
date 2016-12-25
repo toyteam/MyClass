@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2016-12-25 22:19:59
+Date: 2016-12-25 22:38:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,6 +30,25 @@ CREATE TABLE `class` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `form`
+-- ----------------------------
+DROP TABLE IF EXISTS `form`;
+CREATE TABLE `form` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `form_title` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `form_create_user_id` int(11) DEFAULT NULL,
+  `form_create_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `form_delete_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `form_update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `form_close_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of form
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `form_col`
 -- ----------------------------
 DROP TABLE IF EXISTS `form_col`;
@@ -42,25 +61,6 @@ CREATE TABLE `form_col` (
 
 -- ----------------------------
 -- Records of form_col
--- ----------------------------
-
--- ----------------------------
--- Table structure for `form_info`
--- ----------------------------
-DROP TABLE IF EXISTS `form_info`;
-CREATE TABLE `form_info` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `form_title` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `form_create_user_id` int(11) DEFAULT NULL,
-  `form_create_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `form_delete_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `form_update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `form_close_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ----------------------------
--- Records of form_info
 -- ----------------------------
 
 -- ----------------------------
