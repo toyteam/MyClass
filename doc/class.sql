@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2016-12-26 17:33:58
+Date: 2016-12-26 19:56:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -39,10 +39,10 @@ CREATE TABLE `form` (
   `form_title` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `form_detail` text COLLATE utf8_unicode_ci,
   `form_create_user_id` int(11) DEFAULT NULL,
-  `form_create_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `form_delete_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `form_update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `form_close_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `form_create_time` bigint(20) DEFAULT NULL,
+  `form_delete_time` bigint(20) DEFAULT NULL,
+  `form_update_time` bigint(20) DEFAULT NULL,
+  `form_close_time` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -76,7 +76,7 @@ DROP TABLE IF EXISTS `log`;
 CREATE TABLE `log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `log_user_id` int(11) DEFAULT NULL,
-  `log_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `log_time` bigint(20) DEFAULT NULL,
   `log_data` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -94,9 +94,9 @@ CREATE TABLE `notice` (
   `notice_title` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `notice_txt` text COLLATE utf8_unicode_ci,
   `notice_create_user_id` int(11) DEFAULT NULL,
-  `notice_create_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `notice_update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `notice_delete_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `notice_create_time` bigint(20) DEFAULT NULL,
+  `notice_update_time` bigint(20) DEFAULT NULL,
+  `notice_delete_time` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -144,15 +144,16 @@ CREATE TABLE `user` (
   `user_sno` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_pw` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_role_id` int(11) DEFAULT NULL,
   `user_class_id` int(11) DEFAULT NULL,
   `user_bio` text COLLATE utf8_unicode_ci,
   `user_avatar` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_create_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `user_delete_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `user_latest_login_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `user_create_time` bigint(20) DEFAULT NULL,
+  `user_delete_time` bigint(20) DEFAULT NULL,
+  `user_latest_login_time` bigint(20) DEFAULT NULL,
   `user_latest_ip` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of user
@@ -167,9 +168,9 @@ CREATE TABLE `user_form` (
   `user_form_user_id` int(11) DEFAULT NULL,
   `user_form_form_id` int(11) DEFAULT NULL,
   `user_form_data` text COLLATE utf8_unicode_ci,
-  `user_form_create_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `user_form_delete_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `user_form_update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `user_form_create_time` bigint(20) DEFAULT NULL,
+  `user_form_delete_time` bigint(20) DEFAULT NULL,
+  `user_form_update_time` bigint(20) DEFAULT NULL,
   `user_form_fill_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
