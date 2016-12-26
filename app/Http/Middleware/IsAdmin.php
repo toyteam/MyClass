@@ -24,7 +24,7 @@ class IsAdmin
 
     private function isnotAdmin()
     {
-        if(! session()->get('stu_info'))
+        if(! session()->get('user_info'))
         {
             return true;
         }

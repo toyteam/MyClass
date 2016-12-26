@@ -1,5 +1,5 @@
 <?php
-    $stu_info = session()->get('stu_info');
+    $user_info = session()->get('user_info');
 ?>
 <!DOCTYPE html>
 <html>
@@ -53,15 +53,15 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="{{asset('AdminLTE2')}}/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                  <span class="hidden-xs">{{ $stu_info->stu_name }}</span>
+                  <span class="hidden-xs">{{ $user_info->user_name }}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <img src="{{asset('AdminLTE2')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     <p>
-                      {{ $stu_info->stu_name }}
-                      <small>该帐号创建于 {{date('Y-m-d', $stu_info->stu_create_time)}}</small>
+                      {{ $user_info->user_name }}
+                      <small>该帐号创建于 {{$user_info->user_create_time}}</small>
                     </p>
                   </li>
                   <!-- Menu Footer-->
@@ -89,7 +89,7 @@
               <img src="{{asset('AdminLTE2')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p>{{$stu_info->stu_name}}</p>
+              <p>{{$user_info->user_name}}</p>
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
@@ -120,8 +120,8 @@
               </a>
               <ul class="treeview-menu">
                 <li id="life_budget"><a href="#"><i class="fa fa-circle-o"></i>班费公示</a></li>
-                <li id="life_fund"><a href="{{url('life/fund')}}"><i class="fa fa-circle-o"></i>缴纳班费</a></li>
-                <li id="life_form"><a href="{{url('life/form')}}"><i class="fa fa-circle-o"></i>填写表格</a></li>
+                <li id="life_fund"><a href="{{url('life/fund')}}"><i class="fa fa-circle-o"></i>班费缴纳</a></li>
+                <li id="life_form"><a href="{{url('life/form')}}"><i class="fa fa-circle-o"></i>表格填写</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -199,7 +199,7 @@
           <a href="#">建议反馈</a> |
           <b>版本</b> 1.0.0
         </div>
-        <strong>&copy; 2017 <a href="#">413之阿和的长辈联盟</a>.</strong> All rights reserved.
+        <strong>&copy; 2017 <a href="#">苏大软嵌</a>.</strong> All rights reserved.
       </footer>
       
     </div><!-- ./wrapper -->

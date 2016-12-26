@@ -51,15 +51,6 @@ Route::group(['middleware' => ['web']], function () {
 
 	    	} );
 	    	
-	    	// deprecated
-
-	    	// Route::get('/manage', 'Manage@index');
-	    	// Route::get('/manage/viewAll', 'Manage@getAllInfo');
-	    	// Route::get('/manage/whoNotFill', 'Manage@getWhoNotFill');
-	    	// Route::get('/manage/event', 'Manage@event');
-	    	// Route::get('/manage/event_add', 'Manage@event_add');
-	    	// Route::post('/manage/event_add', 'Manage@event_add_check');
-	    	// Route::get('/manage/delete/{id}', 'Manage@event_delete');
 	});
 
 });

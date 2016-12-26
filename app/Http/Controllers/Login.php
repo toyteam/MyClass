@@ -39,7 +39,6 @@ class Login extends Controller
 
     		$user_sno = $request->input('user_sno');
     		$user_pw = $request->input('user_pw');
-    		$user_info = $this->user_db->getUserInfoBySno($user_sno);
 
     		if(! ($user_info = $this->user_db->getUserInfoBySno($user_sno))){
     			return redirect()->back()->withInput($request->except('user_pw'))->withErrors('此学号不存在！');
@@ -54,15 +53,15 @@ class Login extends Controller
 
     	private function afterLogin($user_info)
     	{
-    		$user_info->user_last_login_time = time();
-    		$user_info->user_last_login_ip = $this->getIP();
+    		$user_info->user_latest_login_time = date("Y-m-d H:i:s");
+    		$user_info->user_latest_ip = $this->getIP();
 
     		if($this->user_db->updateUserInfo($user_info->id, $user_info)){
     			session()->put('isLogin', 1);
     			session()->put('user_info', $user_info);
     			return redirect('welcome');
     		} else {
-    			return redirect()->back()->withInput($request->except('user_pw'))->withErrors('系统错误：登录失败，请及时联系管理员');
+    			return redirect()->back()->withErrors('系统错误：登录失败，请及时联系管理员');
     		}
     	}
 

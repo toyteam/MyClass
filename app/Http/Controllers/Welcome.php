@@ -30,7 +30,7 @@ class Welcome extends Controller
     	{
     		$data = [
     		'url' => 'life_fund',
-    		'title' => '缴纳班费'
+    		'title' => '班费缴纳'
     		];
     		return view('life/fund', $data);
     	}
@@ -39,9 +39,9 @@ class Welcome extends Controller
     	{
     		$data = [
     		'url' => 'life_form',
-    		'title' => '填写表格'
+    		'title' => '表格填写'
     		];
-    		$form = new Info($data);
+    		$form = new Form($data);
     		return $form->index();
     	}
 
