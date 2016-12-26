@@ -53,7 +53,7 @@ class Login extends Controller
 
     	private function afterLogin($user_info)
     	{
-    		$user_info->user_latest_login_time = date("Y-m-d H:i:s");
+    		$user_info->user_latest_login_time = time();
     		$user_info->user_latest_ip = $this->getIP();
 
     		if($this->user_db->updateUserInfo($user_info->id, $user_info)){

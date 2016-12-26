@@ -61,7 +61,7 @@
                     <img src="{{asset('AdminLTE2')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     <p>
                       {{ $user_info->user_name }}
-                      <small>该帐号创建于 {{$user_info->user_create_time}}</small>
+                      <small>该帐号创建于 {{date('Y-m-d',$user_info->user_create_time)}}</small>
                     </p>
                   </li>
                   <!-- Menu Footer-->
