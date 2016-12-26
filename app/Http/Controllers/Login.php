@@ -8,12 +8,11 @@ use App\Http\Requests;
 
 class Login extends Controller
 {
-	protected $stu_db ;
-	private $stu_info;
+	protected $user_db ;
 
 	public function __construct()
 	{
-		$this->stu_db = new \App\StuInfo();
+		$this->user_db = new \App\User();
 	}
 
     	public function index()
@@ -25,45 +24,45 @@ class Login extends Controller
     	{
 
     		$validator = \Validator::make($request->input(),[
-    			'stu_sno' => 'required',
-    			'stu_pw' =>'required'
+    			'user_sno' => 'required',
+    			'user_pw' =>'required'
     			],[
     			'required' => ':attribute为必填项'
     			],[
-    			'stu_sno' => '学号',
-    			'stu_pw' => '密码'
+    			'user_sno' => '学号',
+    			'user_pw' => '密码'
     			]);
 
     		if ($validator->fails()) {
     			return redirect()->back()->withErrors($validator)->withInput();
     		}
 
-    		$stu_sno = $request->input('stu_sno');
-    		$stu_pw = $request->input('stu_pw');
-    		$stu_info = $this->stu_db->getStuInfoBySno($stu_sno);
+    		$user_sno = $request->input('user_sno');
+    		$user_pw = $request->input('user_pw');
+    		$user_info = $this->user_db->getUserInfoBySno($user_sno);
 
-    		if(! ($stu_info = $this->stu_db->getStuInfoBySno($stu_sno))){
-    			return redirect()->back()->withInput($request->except('stu_pw'))->withErrors('此学号不存在！');
+    		if(! ($user_info = $this->user_db->getUserInfoBySno($user_sno))){
+    			return redirect()->back()->withInput($request->except('user_pw'))->withErrors('此学号不存在！');
     		}
     		
-    		if(! password_verify($stu_pw, $stu_info->stu_pw)){
-    			return redirect()->back()->withInput($request->except('stu_pw'))->withErrors('学号或密码错误！');
+    		if(! password_verify($user_pw, $user_info->user_pw)){
+    			return redirect()->back()->withInput($request->except('user_pw'))->withErrors('学号或密码错误！');
     		}
 
-    		return $this->afterLogin($stu_info);
+    		return $this->afterLogin($user_info);
     	}
 
-    	private function afterLogin($stu_info)
+    	private function afterLogin($user_info)
     	{
-    		$stu_info->stu_last_login_time = time();
-    		$stu_info->stu_last_login_ip = $this->getIP();
+    		$user_info->user_last_login_time = time();
+    		$user_info->user_last_login_ip = $this->getIP();
 
-    		if($this->stu_db->updateStuInfo($stu_info->id, $stu_info)){
+    		if($this->user_db->updateUserInfo($user_info->id, $user_info)){
     			session()->put('isLogin', 1);
-    			session()->put('stu_info', $stu_info);
+    			session()->put('user_info', $user_info);
     			return redirect('welcome');
     		} else {
-    			return redirect()->back()->withInput($request->except('stu_pw'))->withErrors('系统错误：登录失败，请及时联系管理员');
+    			return redirect()->back()->withInput($request->except('user_pw'))->withErrors('系统错误：登录失败，请及时联系管理员');
     		}
     	}
 

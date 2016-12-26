@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class Info extends Controller
+class Form extends Controller
 {
 	protected $stu_db;
 	protected $event_db;
