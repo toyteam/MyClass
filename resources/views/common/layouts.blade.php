@@ -12,9 +12,9 @@
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="{{asset('AdminLTE2')}}/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('font-awesome-4.7.0')}}/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{asset('ionicons-2.0.1')}}/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('AdminLTE2')}}/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -159,7 +159,7 @@
 
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-edit"></i> <span>后台管理</span>
+                <i class="fa fa-cogs"></i> <span>后台管理</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
@@ -171,7 +171,7 @@
               </ul>
             </li>
             
-            <li><a href="{{url('logout')}}"><i class="fa fa-book"></i> <span>登出</span></a></li>
+            <li><a href="{{url('logout')}}"><i class="fa fa-sign-out"></i> <span>登出</span></a></li>
 
         </section>
         <!-- /.sidebar -->
