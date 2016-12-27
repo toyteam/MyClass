@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2016-12-26 19:56:55
+Date: 2016-12-27 22:50:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,12 +23,14 @@ CREATE TABLE `class` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `class_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `class_introduction` text COLLATE utf8_unicode_ci,
+  `class_grade` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of class
 -- ----------------------------
+INSERT INTO `class` VALUES ('1', '软件工程（嵌入式）', null, '2015');
 
 -- ----------------------------
 -- Table structure for `form`
@@ -129,11 +131,13 @@ CREATE TABLE `role` (
   `role_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `role_introduction` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of role
 -- ----------------------------
+INSERT INTO `role` VALUES ('1', '班委', '班级管理人员');
+INSERT INTO `role` VALUES ('2', '同学', '普通用户');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -158,6 +162,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
+INSERT INTO `user` VALUES ('1', '1', '$2y$10$CPkfD/cTmD3/5YojXlpBrOPnBy6A6qiuIcpwcl18mtTz7ezIfIgFq', '测试账号', '1', '1', '我就是测试人员，哈哈哈！', null, '1482850095', null, null, null);
 
 -- ----------------------------
 -- Table structure for `user_form`
