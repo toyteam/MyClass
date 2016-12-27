@@ -55,6 +55,16 @@ class Welcome extends Controller
     		return $notice->manage();    		
     	}
 
+    	public function manage_user()
+    	{
+    		$data = [
+    		'url' => 'manage_user',
+    		'title' => '人员管理'
+    		];
+    		$user = new User($data);
+    		return $user->manage();
+    	}
+
     	public function logout()
     	{
     		session()->flush();

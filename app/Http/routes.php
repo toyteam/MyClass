@@ -48,8 +48,9 @@ Route::group(['middleware' => ['web']], function () {
 	    	Route::group(['middleware' => 'isadmin'], function(){
 
 	    		Route::get('/manage/notice', 'Welcome@manage_notice');
+	    		Route::get('/manage/user', 'Welcome@manage_user');
 
-	    	} );
+	    	});
 	    	
 	});
 

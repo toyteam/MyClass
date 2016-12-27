@@ -166,7 +166,7 @@
                 <li><a href="#"><i class="fa fa-circle-o"></i>班费管理</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>表格管理</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>资料管理</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>人员管理</a></li>
+                <li id="manage_user"><a href="{{ url('manage/user')}}"><i class="fa fa-circle-o"></i>人员管理</a></li>
                 <li id="manage_notice"><a href="{{ url('manage/notice') }}"><i class="fa fa-circle-o"></i>通知管理</a></li>
               </ul>
             </li>
