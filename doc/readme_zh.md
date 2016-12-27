@@ -7,19 +7,22 @@
 [![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-## 简介
-班级管理系统是一个以网页为基础，对班级事务进行快捷方便管理的系统。它使用php语言，laravel后台，adminlte前端为开发框架。系统具备问题讨论，数据统计，收班费，发公告，投票，表白墙，资料分享等多种功能，极大方便了学生间的沟通和相关班级事务的处理。
-
-
 ## 语言
   *[English](https://github.com/toyteam/MyClass/blob/master/doc/readme_en.md)</br>
   *[中文](https://github.com/toyteam/MyClass/blob/master/doc/readme_zh.md)</br>
+
+
+## 简介
+班级管理系统是一个以网页为基础，对班级事务进行快捷方便管理的系统。它使用php语言，laravel后台，adminlte前端为开发框架。系统具备问题讨论，数据统计，收班费，发公告，投票，表白墙，资料分享等多种功能，极大方便了学生间的沟通和相关班级事务的处理。
 
 ## 安装
 首先，将laravel框架下载到Apache或Nginx的根目录中。 然后pull代码到该目录。最后，就可以访问这个网站了。
 
 ## 使用
 点击此处即可进入该系统[班级管理(demo)](http://creative.wicp.net)。
+
+## 数据库字典
+[数据库字典](https://github.com/toyteam/MyClass/blob/develop/doc/database_dictionary_zh.md) 阐述了数据库的表结构。 每一个字段都会有一个简要的注释。
 
 ## 官方文档
 
