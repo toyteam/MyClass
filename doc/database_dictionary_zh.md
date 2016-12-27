@@ -33,6 +33,7 @@
 |id			                 |int		          |11		          |         |Not	   |	yes	      |班级的唯一标识      |
 |class_name              |varchar         |50		          |	        |        |	no	      |班级的名称          |
 |class_introduction      |text            |0		          |	        |        |	no	      |班级的简介          |
+|class_grade             |int             |11		          |	        |        |	no	      |班级的年级          |
 
 ##role
 ###角色表

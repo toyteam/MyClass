@@ -78,6 +78,7 @@
 | id | int | 11 || Not | yes | Unique ID of the class
 | class_name | varchar | 50 ||| | The name of the class |
 | class_introduction | text | 0 ||| | Introduction to Classes |
+| class_grade | int |11|||no|The grade of class|
 
 ## role
 ### Role table
