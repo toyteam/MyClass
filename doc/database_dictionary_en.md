@@ -100,5 +100,5 @@
 |-----------------------|:--------------:|-------------:|--------:|------:|----------:|-----------------:|
 | Id | int | 11 || Not | yes | The unique identifier for the control |
 | Plugin_name | varchar | 50 ||| no | control name |
-| Plugin_url | varchar | 50 ||| control url |
+| Plugin_url | varchar | 50 ||| no | control url |
 | Plugin_detail | text | 0 ||| no | Controls Introduction |
