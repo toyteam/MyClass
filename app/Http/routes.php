@@ -30,36 +30,36 @@ Route::group(['middleware' => ['web']], function () {
 	
 	// login
 	Route::group(['middleware' => 'isnotlogin'],function(){
-		Route::get('/', 'Login@index');
-		Route::post('/', 'Login@check');
+		Route::get('/', 'LoginController@index');
+		Route::post('/', 'LoginController@check');
 	});
 
 	// system
 	Route::group(['middleware' => 'islogin'],function(){
 		// welcome
-	    	Route::get('/welcome','Welcome@index');
-	    	Route::get('/logout','Welcome@logout');
+	    	Route::get('/welcome','WelcomeController@index');
+	    	Route::get('/logout','WelcomeController@logout');
 
 	    	// life
-	    	Route::get('/life/fund', 'Welcome@life_fund');
-	    	Route::get('/life/form', 'Welcome@life_form');
+	    	Route::get('/life/fund', 'WelcomeController@life_fund');
+	    	Route::get('/life/form', 'WelcomeController@life_form');
+
+	    	//file
+	    	Route::get('/download/{file_name}', 'FileController@download_file');
 
 	    	// manage
 	    	Route::group(['middleware' => 'isadmin'], function(){
 
-	    		Route::get('/manage/notice', 'Welcome@manage_notice');
+	    		Route::get('/manage/notice', 'WelcomeController@manage_notice');
+	    		Route::get('/manage/user', 'WelcomeController@manage_user');
 
-	    	} );
+	    		// Route::get('/manage/user/import_user', 'UserController@import_user');
+	    		Route::get('/manage/user/import_users', 'UserController@import_users');
+
+	    		Route::post('/excel/importUsers', 'ExcelController@importUsers');
+
+	    	});
 	    	
-	    	// deprecated
-
-	    	// Route::get('/manage', 'Manage@index');
-	    	// Route::get('/manage/viewAll', 'Manage@getAllInfo');
-	    	// Route::get('/manage/whoNotFill', 'Manage@getWhoNotFill');
-	    	// Route::get('/manage/event', 'Manage@event');
-	    	// Route::get('/manage/event_add', 'Manage@event_add');
-	    	// Route::post('/manage/event_add', 'Manage@event_add_check');
-	    	// Route::get('/manage/delete/{id}', 'Manage@event_delete');
 	});
 
 });

@@ -1,5 +1,5 @@
 <?php
-    $stu_info = session()->get('stu_info');
+    $user_info = session()->get('user_info');
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,14 +12,16 @@
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="{{asset('AdminLTE2')}}/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('font-awesome-4.7.0')}}/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{asset('ionicons-2.0.1')}}/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('AdminLTE2')}}/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('AdminLTE2')}}/dist/css/skins/_all-skins.min.css">
+    <!-- toastr -->
+    <link rel="stylesheet" href="{{asset('AdminLTE2')}}/plugins/toastr/toastr.css">
 
     @section('MyCss')
 
@@ -53,15 +55,15 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="{{asset('AdminLTE2')}}/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                  <span class="hidden-xs">{{ $stu_info->stu_name }}</span>
+                  <span class="hidden-xs">{{ $user_info->user_name }}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <img src="{{asset('AdminLTE2')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     <p>
-                      {{ $stu_info->stu_name }}
-                      <small>该帐号创建于 {{date('Y-m-d', $stu_info->stu_create_time)}}</small>
+                      {{ $user_info->user_name }}
+                      <small>该帐号创建于 {{date('Y-m-d',$user_info->user_create_time)}}</small>
                     </p>
                   </li>
                   <!-- Menu Footer-->
@@ -89,7 +91,7 @@
               <img src="{{asset('AdminLTE2')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p>{{$stu_info->stu_name}}</p>
+              <p>{{$user_info->user_name}}</p>
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
@@ -120,8 +122,8 @@
               </a>
               <ul class="treeview-menu">
                 <li id="life_budget"><a href="#"><i class="fa fa-circle-o"></i>班费公示</a></li>
-                <li id="life_fund"><a href="{{url('life/fund')}}"><i class="fa fa-circle-o"></i>缴纳班费</a></li>
-                <li id="life_form"><a href="{{url('life/form')}}"><i class="fa fa-circle-o"></i>填写表格</a></li>
+                <li id="life_fund"><a href="{{url('life/fund')}}"><i class="fa fa-circle-o"></i>班费缴纳</a></li>
+                <li id="life_form"><a href="{{url('life/form')}}"><i class="fa fa-circle-o"></i>表格填写</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -159,19 +161,19 @@
 
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-edit"></i> <span>后台管理</span>
+                <i class="fa fa-cogs"></i> <span>后台管理</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li><a href="#"><i class="fa fa-circle-o"></i>班费管理</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>表格管理</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>资料管理</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>人员管理</a></li>
+                <li id="manage_user"><a href="{{ url('manage/user')}}"><i class="fa fa-circle-o"></i>人员管理</a></li>
                 <li id="manage_notice"><a href="{{ url('manage/notice') }}"><i class="fa fa-circle-o"></i>通知管理</a></li>
               </ul>
             </li>
             
-            <li><a href="{{url('logout')}}"><i class="fa fa-book"></i> <span>登出</span></a></li>
+            <li><a href="{{url('logout')}}"><i class="fa fa-sign-out"></i> <span>登出</span></a></li>
 
         </section>
         <!-- /.sidebar -->
@@ -199,7 +201,7 @@
           <a href="#">建议反馈</a> |
           <b>版本</b> 1.0.0
         </div>
-        <strong>&copy; 2017 <a href="#">413之阿和的长辈联盟</a>.</strong> All rights reserved.
+        <strong>&copy; 2017 <a href="#">苏大软嵌</a>.</strong> All rights reserved.
       </footer>
       
     </div><!-- ./wrapper -->
@@ -216,11 +218,15 @@
     <script src="{{asset('AdminLTE2')}}/bootstrap/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="{{asset('AdminLTE2')}}/dist/js/app.min.js"></script>
+    <!-- toastr -->
+    <script src="{{asset('AdminLTE2')}}/plugins/toastr/toastr.js"></script>
 
     <script type="text/javascript">
       $('#{{ $url }}').addClass('active');
       $('#{{ $url }}').parents().addClass('active');
     </script>
+
+    @include('common.error')
 
     @section('MyJavascript')
 

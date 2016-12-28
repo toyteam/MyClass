@@ -35,11 +35,11 @@
         <form action="{{ url('/') }}" method="post">
            {{ csrf_field() }}
           <div class="form-group has-feedback">
-            <input type="text" name="stu_sno" class="form-control" placeholder="学号" value="{{ old('stu_sno') }}">
+            <input type="text" name="user_sno" class="form-control" placeholder="学号" value="{{ old('user_sno') }}">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" name="stu_pw" class="form-control" placeholder="密码" value="{{ old('stu_pw') }}">
+            <input type="password" name="user_pw" class="form-control" placeholder="密码" value="{{ old('user_pw') }}">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
