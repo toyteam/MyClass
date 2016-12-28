@@ -20,6 +20,8 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('AdminLTE2')}}/dist/css/skins/_all-skins.min.css">
+    <!-- toastr -->
+    <link rel="stylesheet" href="{{asset('AdminLTE2')}}/plugins/toastr/toastr.css">
 
     @section('MyCss')
 
@@ -216,11 +218,15 @@
     <script src="{{asset('AdminLTE2')}}/bootstrap/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="{{asset('AdminLTE2')}}/dist/js/app.min.js"></script>
+    <!-- toastr -->
+    <script src="{{asset('AdminLTE2')}}/plugins/toastr/toastr.js"></script>
 
     <script type="text/javascript">
       $('#{{ $url }}').addClass('active');
       $('#{{ $url }}').parents().addClass('active');
     </script>
+
+    @include('common.error')
 
     @section('MyJavascript')
 

@@ -6,6 +6,9 @@
 <link rel="stylesheet" href="{{asset('AdminLTE2')}}/plugins/datatables/dataTables.bootstrap.css">
 @stop
 
+
+
+
 @section('content')
 
         <!-- Main content -->
@@ -16,6 +19,8 @@
               <div class="box">
                 <div class="box-header">
                   <h3 class="box-title">人员信息</h3>
+                  <a href="/manage/user/import_user">添加人员</a>
+                  <a href="/manage/user/import_users">批量添加人员</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table id="user_info" class="table table-bordered table-striped">
@@ -55,6 +60,8 @@
 
 @stop
 
+
+
 @section('MyJavascript')
 <!-- DataTables -->
 <script src="{{asset('AdminLTE2')}}/plugins/datatables/jquery.dataTables.min.js"></script>
@@ -70,6 +77,7 @@
 			"ordering": true,
 			"info": false,
 			"autoWidth": true,
+                            "deferRender": true,
 			"language": {
 			        "sProcessing": "处理中...",
 			        "sLengthMenu": "显示 _MENU_ 项结果",

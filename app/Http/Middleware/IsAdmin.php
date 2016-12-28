@@ -17,14 +17,15 @@ class IsAdmin
     {
         if($this->isnotAdmin())
         {
-            return redirect()->back();
+                return redirect()->back()->withErrors('很抱歉，您没有权限访问该页面');
         }
         return $next($request);
     }
 
     private function isnotAdmin()
     {
-        if(! session()->get('user_info'))
+        $role_id = session()->get('user_info')->user_role_id;
+        if($role_id != 1)
         {
             return true;
         }
