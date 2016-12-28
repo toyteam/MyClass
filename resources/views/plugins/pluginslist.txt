@@ -1,0 +1,17 @@
+text
+password
+email
+textarea
+select
+checkbox
+radio
+datepicker
+timepicker
+daterangepicker
+datetimepicker
+inputmask
+addrselect
+mutliselect
+slider
+file
+editor
