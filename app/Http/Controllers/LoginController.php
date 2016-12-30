@@ -53,12 +53,18 @@ class LoginController extends Controller
 
     	private function afterLogin($user_info)
     	{
+    		// 保存上次的信息
+    		$user_latest_login_time = $user_info->user_latest_login_time;
+    		$user_latest_ip = $user_info->user_latest_ip;
+
     		$user_info->user_latest_login_time = time();
     		$user_info->user_latest_ip = $this->getIP();
 
     		if($this->user_db->updateUserInfo($user_info->id, $user_info)){
-    			session()->put('isLogin', 1);
+    			session()->put('isLogin', 1);  			
     			session()->put('user_info', $user_info);
+                                                        session()->put('user_latest_login_time', $user_latest_login_time);
+                                                        session()->put('user_latest_ip', $user_latest_ip);
     			return redirect('welcome');
     		} else {
     			return redirect()->back()->withErrors('系统错误：登录失败，请及时联系管理员');

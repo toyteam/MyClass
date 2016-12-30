@@ -26,6 +26,8 @@ class WelcomeController extends Controller
     		return $notice->index();
     	}
 
+        // life
+
     	public function life_fund()
     	{
     		$data = [
@@ -45,6 +47,43 @@ class WelcomeController extends Controller
     		return $form->index();
     	}
 
+        // info
+
+    	public function info_check()
+    	{
+    		$data = [
+    		'url' => 'info_check',
+    		'title' => '信息查看'
+    		];
+
+    		$user = new UserController($data);
+    		return $user->checkOneInfo();
+    	}
+
+    	public function info_edit()
+    	{
+    		$data = [
+    		'url' => 'info_edit',
+    		'title' => '信息修改'
+    		];
+
+    		$user = new UserController($data);
+    		return $user->editOneInfo();
+    	}
+
+                	public function info_password_edit()
+                	{
+                		$data = [
+                		'url' => 'info_password_edit',
+                		'title' => '密码修改'
+                		];
+
+                		$user = new UserController($data);
+                		return $user->editOndePassword();
+                	}
+
+        //manage
+        
     	public function manage_notice()
     	{
     		$data = [
@@ -65,6 +104,7 @@ class WelcomeController extends Controller
     		return $user->manage();
     	}
 
+        // else
     	public function logout()
     	{
     		session()->flush();

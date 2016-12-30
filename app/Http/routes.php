@@ -26,6 +26,7 @@
 |
 */
 
+
 Route::group(['middleware' => ['web']], function () {
 	
 	// login
@@ -44,8 +45,12 @@ Route::group(['middleware' => ['web']], function () {
 	    	Route::get('/life/fund', 'WelcomeController@life_fund');
 	    	Route::get('/life/form', 'WelcomeController@life_form');
 
-	    	//file
-	    	Route::get('/download/{file_name}', 'FileController@download_file');
+	    	// info
+	    	Route::get('info/check', 'WelcomeController@info_check');
+	    	Route::get('info/edit', 'WelcomeController@info_edit');
+	    	Route::post('info/edit', 'UserController@editInfo');
+	    	Route::get('info/password_edit', 'WelcomeController@info_password_edit');
+		Route::post('info/password_edit', 'UserController@editPassword');
 
 	    	// manage
 	    	Route::group(['middleware' => 'isadmin'], function(){
@@ -54,10 +59,20 @@ Route::group(['middleware' => ['web']], function () {
 	    		Route::get('/manage/user', 'WelcomeController@manage_user');
 
 	    		// Route::get('/manage/user/import_user', 'UserController@import_user');
-	    		Route::get('/manage/user/import_users', 'UserController@import_users');
+	    		Route::get('/manage/user/import_users', 'UserController@importUsers');
 
 	    		Route::post('/excel/importUsers', 'ExcelController@importUsers');
 
+
+	    	});
+
+	    	// file
+	    	Route::get('/download/{file_name}', 'FileController@download_file');
+
+	    	// not finish
+	    	Route::group(['middleware' => 'isnotpublic'], function(){
+	    		Route::get('/life/fund', 'WelcomeController@life_fund');
+	    		Route::get('/life/form', 'WelcomeController@life_form');
 	    	});
 	    	
 	});
