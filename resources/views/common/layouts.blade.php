@@ -63,7 +63,7 @@
                     <img src="{{asset('AdminLTE2')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     <p>
                       {{ $user_info->user_name }}
-                      <small>该帐号创建于 {{date('Y-m-d',$user_info->user_create_time)}}</small>
+                      <small>上一次登录时间 {{date('Y-m-d',session()->get('user_latest_login_time'))}}</small>
                     </p>
                   </li>
                   <!-- Menu Footer-->
@@ -154,8 +154,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i>信息查看</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>信息修改</a></li>
+                <li id="info_check"><a href="{{ url('info/check') }}"><i class="fa fa-circle-o"></i>信息查看</a></li>
+                <li id="info_edit"><a href="{{ url('info/edit') }}"><i class="fa fa-circle-o"></i>信息修改</a></li>
+                <li id="info_password_edit"><a href="{{ url('info/password_edit') }}"><i class="fa fa-circle-o"></i>密码修改</a></li>
               </ul>
             </li>
 

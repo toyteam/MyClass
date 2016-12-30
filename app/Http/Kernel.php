@@ -46,6 +46,10 @@ class Kernel extends HttpKernel
         'isadmin' =>[
             \App\Http\Middleware\IsAdmin::class,
         ],
+
+        'isnotpublic' => [
+            \App\Http\Middleware\IsNotPublic::class,
+        ],
     ];
 
     /**

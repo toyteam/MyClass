@@ -6,6 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserModel extends Model
 {
+
+	/**
+	 * 根据id查找用户
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
+	public function getUserInfoById($id)
+	{
+		return \DB::table('user')
+		->select('*')
+		->where('id', '=' , $id)
+		->whereNull('user_delete_time')
+		->first();
+	}
+
 	/**
 	 * 根据学号查找用户
 	 * @param  [type] $user_sno [description]
@@ -30,6 +45,7 @@ class UserModel extends Model
 		->join('role', 'user.user_role_id', '=', 'role.id')
 		->join('class', 'user.user_class_id', '=', 'class.id')
 		->select('*')
+		->whereNull('user_delete_time')
 		->get();
 	}
 
