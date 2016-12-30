@@ -30,8 +30,8 @@
         <a href="#">班级管理系统</a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">初始密码为学号，登录后请修改密码</p>
-        @include('common.error')
+        <p class="login-box-msg">初始密码为123456，登录后请修改密码</p>
+        <p style="color:red">{{ $errors->first()}}</p>
         <form action="{{ url('/') }}" method="post">
            {{ csrf_field() }}
           <div class="form-group has-feedback">
