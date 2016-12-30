@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2016-12-27 22:50:43
+Date: 2016-12-30 15:37:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -60,8 +60,7 @@ CREATE TABLE `form_col` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `form_col_form_id` int(11) DEFAULT NULL,
   `form_col_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `form_col_default` text COLLATE utf8_unicode_ci,
-  `form_col_placeholder` text COLLATE utf8_unicode_ci,
+  `form_col_data` text COLLATE utf8_unicode_ci,
   `form_col_plugin_id` int(11) DEFAULT NULL,
   `form_col_order_id` double DEFAULT NULL,
   PRIMARY KEY (`id`)
