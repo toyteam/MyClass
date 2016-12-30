@@ -36,7 +36,7 @@ class ExcelController extends Controller
 				if (move_uploaded_file($_FILES['excel_users']['tmp_name'], $upload_filename)) {
 					Excel::load($upload_filename, function($reader){
 						$reader->noHeading();
-						$GLOBALS['data'] = $reader->toArray();
+						$GLOBALS['data'] = $reader->toObject();
 					});
 					
 					unset($GLOBALS['data'][0]);
