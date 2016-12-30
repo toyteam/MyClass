@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2016-12-30 15:37:42
+Date: 2016-12-30 16:06:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -147,10 +147,16 @@ CREATE TABLE `user` (
   `user_sno` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_pw` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_gender` int(11) DEFAULT NULL,
   `user_role_id` int(11) DEFAULT NULL,
   `user_class_id` int(11) DEFAULT NULL,
   `user_bio` text COLLATE utf8_unicode_ci,
   `user_avatar` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_qq` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_phone` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_postcode` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_create_time` bigint(20) DEFAULT NULL,
   `user_delete_time` bigint(20) DEFAULT NULL,
   `user_latest_login_time` bigint(20) DEFAULT NULL,
@@ -161,7 +167,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', '1', '$2y$10$CPkfD/cTmD3/5YojXlpBrOPnBy6A6qiuIcpwcl18mtTz7ezIfIgFq', '测试账号', '1', '1', '我就是测试人员，哈哈哈！', null, '1482850095', null, null, null);
+INSERT INTO `user` VALUES ('1', '1', '$2y$10$CPkfD/cTmD3/5YojXlpBrOPnBy6A6qiuIcpwcl18mtTz7ezIfIgFq', '测试账号', null, '1', '1', '我就是测试人员，哈哈哈！', null, null, null, null, null, null, '1482850095', null, null, null);
 
 -- ----------------------------
 -- Table structure for `user_form`
