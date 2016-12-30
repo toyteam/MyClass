@@ -1,7 +1,7 @@
 @extends('common.layouts')
 
 @section('content')
-<a href="/download/人员信息表模板.xls">excel模板下载</a>
+<a href="/download/model.xls">excel模板下载</a>
 
 <form method="POST" action="/excel/importUsers" enctype="multipart/form-data">
 	{{ csrf_field() }}

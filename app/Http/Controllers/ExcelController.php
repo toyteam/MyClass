@@ -32,7 +32,7 @@ class ExcelController extends Controller
 
 			if($this->isExcel($_FILES['excel_users']['type']))
 			{			
-				$upload_filename = $uploaddir . $_FILES['excel_users']['name'];
+				$upload_filename = $uploaddir . md5($_FILES['excel_users']['name']);
 				if (move_uploaded_file($_FILES['excel_users']['tmp_name'], $upload_filename)) {
 					Excel::load($upload_filename, function($reader){
 						$reader->noHeading();
