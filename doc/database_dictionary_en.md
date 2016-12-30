@@ -52,12 +52,11 @@
 | Name | Type | Length | Default | Null | PrimaryKey | Annotation |
 |-----------------------|:--------------:|-------------:| --------:|------:|----------:|-----------------:|
 | id | int | 11 || Not | yes | The unique identifier for the column |
-| form_col_form_id | int | 11 || | no | The id of the table to which the column belongs
+| form_col_form_id | int | 11 || | no | The id of the table to which the column belongs|
 | form_col_name | varchar | 50 ||| no | The name of the column |
-| form_col_default | text | 0 ||| no | The default value for columns
-| form_col_placeholder | text | 0 ||| no | The placeholder for |
-| form_col_plugin_id | int | 0 ||| no | The control id for the column
-| form_col_order_id | text | 0 ||| no | The order of the columns
+| form_col_data | text | 0 ||| no | The default value for columns|
+| form_col_plugin_id | int | 0 ||| no | The control id for the column|
+| form_col_order_id | text | 0 ||| no | The order of the columns|
 
 ## notice
 ### Bulletin board
@@ -101,5 +100,5 @@
 |-----------------------|:--------------:|-------------:|--------:|------:|----------:|-----------------:|
 | id | int | 11 || Not | yes | The unique identifier for the plugins |
 | plugin_name | varchar | 50 ||| no | Plugin name |
-| plugin_url | varchar | 50 ||| no | Plugin url |
+| plugin_url | varchar | 50 ||| no | Plugin directory url |
 | plugin_detail | text | 0 ||| no | Plugins Introduction |

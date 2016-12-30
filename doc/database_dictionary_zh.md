@@ -9,8 +9,7 @@
 |id			                 |int		          |11		          |         |Not	   |	yes	      |列的唯一标识        |
 |form_col_form_id  	     |int             |11		          |	        |        |	no	      |列所属表格的id      |
 |form_col_name           |varchar         |50		          |	        |        |	no	      |列的名称            |
-|form_col_default        |text            |0		          |	        |        |	no	      |列的默认值          |
-|form_col_placeholder    |text            |0		          |	        |        |	no	      |列的占位符          |
+|form_col_data           |text            |0		          |	        |        |	no	      |列的默认参数和数据   |
 |form_col_plugin_id      |int             |0		          |	        |        |	no	      |列的控件id          |
 |form_col_order_id       |text            |0		          |	        |        |	no	      |列的顺序            |
 
@@ -56,5 +55,5 @@
 | -----------------------|:--------------:| -------------:|--------:| ------:| ----------:| -----------------:|
 |id			                 |int		          |11		          |         |Not	   |	yes	      |控件的唯一标识      |
 |plugin_name             |varchar         |50		          |	        |        |	no	      |控件名              |
-|plugin_url              |varchar         |50		          |	        |        |	no	      |控件url             |
+|plugin_url              |varchar         |50		          |	        |        |	no	      |控件所在文件夹的url  |
 |plugin_detail           |text            |0		          |	        |        |	no	      |控件简介            |
