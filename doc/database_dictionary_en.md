@@ -38,10 +38,16 @@
 | user_sno | varchar | 50 ||| no | user number or job number |
 | user_pw | varchar | 255 ||| no | user password |
 | user_name | varchar | 50 ||| no | user name |
+|user_gender|int | 11|||no|user gender|
 | user_class_id | int | 11 ||| no | Class ID of the user
 | user_role_id | int | 11 ||| no | The role id of the user
 | user_bio | text | 0 ||| no | User Profile |
 | user_avatar | varchar | 255 ||| no | User avatar link |
+|user_qq |varchar |50|||no|user qq |
+|user_email|varchar|255|||no|user email |
+|user_phone|varchar|50|||no|user phone number |
+|user_postcode|varchar|10|||no|user postcode |
+|user_address|varchar|255|||no|user address |
 | user_create_time | bigint | 0 ||| no | Created by the user |
 | user_delete_time | bigint | 0 ||| no | User delete time |
 | user_latest_login_time | bigint | 0 ||| no | User last login |
