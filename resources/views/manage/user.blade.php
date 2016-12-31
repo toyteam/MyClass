@@ -34,22 +34,6 @@
                         <th>操作</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      @foreach($all_user_info as $single_user_info)
-                      <tr>
-                        <td>{{ $single_user_info->user_sno}}</td>
-                        <td>{{ $single_user_info->user_name}}</td>
-                        <td>{{ $single_user_info->role_name}}</td>
-                        <td>{{ $single_user_info->class_name}}</td>
-                        <td>{{ date('Y-m-d H:i:s', $single_user_info->user_latest_login_time)}}</td>
-                        <td>
-                        	<a title="修改信息" href="#"><i class="fa fa-edit"></i>修改</a>
-                        	&nbsp;&nbsp;&nbsp;&nbsp;
-                        	<a title="删除" href="#"><i class="fa fa-remove"></i>删除</a>
-                        </td>
-                      </tr>
-                      @endforeach
-                    </tbody>
                   </table>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
@@ -100,8 +84,17 @@
 			        "oAria": {
 			            "sSortAscending": ": 以升序排列此列",
 			            "sSortDescending": ": 以降序排列此列"
-			        }
-			}
+			        },
+			},
+                            "ajax": '{{ url("manage/user/userinfo") }}',
+                            "aoColumns":[
+                                    {"mDataProp": "user_sno"},
+                                    {"mDataProp": "user_name"},
+                                    {"mDataProp": "role_name"},
+                                    {"mDataProp": "class_name"},
+                                    {"mDataProp": "user_latest_login_time"},
+                                    {"mDataProp": "operations"},
+                                ],
 		});
 	});
 </script>

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class UserModel extends Model
 {
 
+	protected $table = "user";
+
 	/**
 	 * 根据id查找用户
 	 * @param  [type] $id [description]
@@ -36,7 +38,7 @@ class UserModel extends Model
 	} 
 
 	/**
-	 * 获得所有用户信息
+	 * 获得所有用户所有信息
 	 * @return [type] [description]
 	 */
 	public function getAllUserInfo()
@@ -47,6 +49,19 @@ class UserModel extends Model
 		->select('*')
 		->whereNull('user_delete_time')
 		->get();
+	}
+
+	/**
+	 * 获得所有用户信息query
+	 * @return [type] [description]
+	 */
+	public function getAllUserInfoQuery()
+	{
+		return \DB::table('user')
+		->join('role', 'user.user_role_id', '=', 'role.id')
+		->join('class', 'user.user_class_id', '=', 'class.id')
+		->select(['*', 'user.id as user_id'])
+		->whereNull('user_delete_time');
 	}
 
 	/**

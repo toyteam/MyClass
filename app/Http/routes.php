@@ -60,6 +60,7 @@ Route::group(['middleware' => ['web']], function () {
 
 	    		// Route::get('/manage/user/import_user', 'UserController@import_user');
 	    		Route::get('/manage/user/import_users', 'UserController@importUsers');
+	    		Route::any('/manage/user/userinfo', 'UserController@ajax_manage');
 
 	    		Route::post('/excel/importUsers', 'ExcelController@importUsers');
 
