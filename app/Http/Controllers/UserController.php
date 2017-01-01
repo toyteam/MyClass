@@ -21,8 +21,6 @@ class UserController extends Controller
 
 	public function manage()
 	{
-		$all_user_info = $this->user_db->getAllUserInfo();
-		$this->data['all_user_info'] = $all_user_info;
 		return view('manage.user', $this->data);
 	}
 

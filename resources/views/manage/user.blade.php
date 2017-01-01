@@ -9,7 +9,32 @@
 
 
 
+
+
 @section('content')
+
+<div class="modal fade" id="import_users" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">批量添加人员</h4>
+            </div>
+            <div class="modal-body">
+                  <a href="/download/model.xls" class="col-md-4">excel模板下载</a>
+                  <form class="col-md-8" method="POST" action="{{url('excel/importUsers')}}" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <input  type="file" name="excel_users" style="display:inline;" />
+                            <input type="submit"  value="导入" style="display:inline;"/>
+                  </form>
+                  <br />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 
         <!-- Main content -->
         <section class="content">
@@ -20,7 +45,7 @@
                 <div class="box-header">
                   <h3 class="box-title">人员信息</h3>
                   <a href="/manage/user/import_user">添加人员</a>
-                  <a href="/manage/user/import_users">批量添加人员</a>
+                  <a href="#import_users" data-toggle="modal">批量添加人员</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table id="user_info" class="table table-bordered table-striped">
@@ -40,7 +65,6 @@
             </div><!-- /.col -->
           </div><!-- /.row -->
         </section><!-- /.content -->
-
 
 @stop
 

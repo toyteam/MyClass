@@ -52,38 +52,45 @@ class ExcelController extends Controller
 					// 开始事务
 					\DB::beginTransaction();
 					foreach ($info as $key => $value) {
-						
-						$user_sno = $value[0];
-						if(is_float($user_sno)){
-							$user_sno = (int)$user_sno;
-						}
-						
-						// $user_pw = password_hash($user_sno, PASSWORD_DEFAULT);
-						$user_name = $value[1];
-						$user_gender = ($value[2][0] == "男"? 1: 2);
-						$user_phone = $value[3];
-						$user_address = $value[4];
+						try{
+							$user_sno = $value[0];
+							if(is_float($user_sno)){
+								$user_sno = (int)$user_sno;
+							}
+							
+							// $user_pw = password_hash($user_sno, PASSWORD_DEFAULT);
+							$user_name = $value[1];
+							$user_gender = ($value[2] == "男"? 1: 2);
+							$user_phone = $value[3];
+							$user_address = $value[4];
 
-						$user = [
-						'user_sno' => $user_sno,
-						'user_pw' => $origin_pw,
-						'user_name' => $user_name,
-						'user_gender' => $user_gender,
-						'user_phone' => $user_phone,
-						'user_address' => $user_address,
-						'user_role_id' => 2,
-						'user_class_id' => 1,
-						'user_create_time' => time(),
-						];
-						
-						if(! $this->user_db->insertUserInfo($user)){
-							// 回滚事务
+							$user = [
+							'user_sno' => $user_sno,
+							'user_pw' => $origin_pw,
+							'user_name' => $user_name,
+							'user_gender' => $user_gender,
+							'user_phone' => $user_phone,
+							'user_address' => $user_address,
+							'user_role_id' => 2,
+							'user_class_id' => 1,
+							'user_create_time' => time(),
+							];
+							
+							if(! $this->user_db->insertUserInfo($user)){
+								// 回滚事务
+								\DB::rollBack();
+								unlink($upload_filename);
+								return redirect()->back()->withErrors('表格中，第' . ($key+1) .'行格式有误');
+							}
+						}catch(\Throwable $e){
 							\DB::rollBack();
-							return redirect()->back()->withErrors('表格中，第' . $key+1 .'行有错误');
+							unlink($upload_filename);
+							return redirect()->back()->withErrors('表格中，第' . ($key+1) .'行格式有误');
 						}
 					}
 					// 提交事务
 					\DB::commit();
+					unlink($upload_filename);
 					return redirect()->back();
 				} else {
 					return redirect()->back()->withErrors('导入表格时发生错误，请及时联系系统管理员');
