@@ -27,6 +27,13 @@
 
     @show
 
+    <!-- jQuery 2.1.4 -->
+    <script src="{{asset('AdminLTE2')}}/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="{{asset('AdminLTE2')}}/bootstrap/js/bootstrap.min.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -63,7 +70,7 @@
                     <img src="{{asset('AdminLTE2')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     <p>
                       {{ $user_info->user_name }}
-                      <small>上一次登录时间 {{date('Y-m-d',session()->get('user_latest_login_time'))}}</small>
+                      <small>该帐号创建于 {{date('Y-m-d',$user_info->user_create_time)}}</small>
                     </p>
                   </li>
                   <!-- Menu Footer-->
@@ -154,9 +161,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li id="info_check"><a href="{{ url('info/check') }}"><i class="fa fa-circle-o"></i>信息查看</a></li>
-                <li id="info_edit"><a href="{{ url('info/edit') }}"><i class="fa fa-circle-o"></i>信息修改</a></li>
-                <li id="info_password_edit"><a href="{{ url('info/password_edit') }}"><i class="fa fa-circle-o"></i>密码修改</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i>信息查看</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i>信息修改</a></li>
               </ul>
             </li>
 
@@ -167,7 +173,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="#"><i class="fa fa-circle-o"></i>班费管理</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>表格管理</a></li>
+                <li id="manage_form"><a href="{{ url('manage/form')}}"><i class="fa fa-circle-o"></i>表格管理</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>资料管理</a></li>
                 <li id="manage_user"><a href="{{ url('manage/user')}}"><i class="fa fa-circle-o"></i>人员管理</a></li>
                 <li id="manage_notice"><a href="{{ url('manage/notice') }}"><i class="fa fa-circle-o"></i>通知管理</a></li>
@@ -207,16 +213,12 @@
       
     </div><!-- ./wrapper -->
 
-    <!-- jQuery 2.1.4 -->
-    <script src="{{asset('AdminLTE2')}}/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
       $.widget.bridge('uibutton', $.ui.button);
     </script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="{{asset('AdminLTE2')}}/bootstrap/js/bootstrap.min.js"></script>
+
     <!-- AdminLTE App -->
     <script src="{{asset('AdminLTE2')}}/dist/js/app.min.js"></script>
     <!-- toastr -->

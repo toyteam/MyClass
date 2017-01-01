@@ -9,7 +9,38 @@
 
 
 
+
+
 @section('content')
+
+<div class="modal fade" id="import_users" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">批量添加人员</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <div class="col-md-3">
+                  <a href="/download/model.xls"><button class="btn btn-default">excel模板下载</button></a>
+                </div>
+                <div class="col-md-9">
+                    <form method="POST" action="{{url('excel/importUsers')}}" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <input id="excel_users" name="excel_users" type="file" style="display:none">
+                    <span class="input-group-addon" onclick="$('input[id=excel_users]').click();" style="cursor: pointer; "><i class="fa fa-folder-open"></i>选择文件</span>
+                    <input id="photoCover" class="form-control" type="submit">
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 
         <!-- Main content -->
         <section class="content">
@@ -20,7 +51,7 @@
                 <div class="box-header">
                   <h3 class="box-title">人员信息</h3>
                   <a href="/manage/user/import_user">添加人员</a>
-                  <a href="/manage/user/import_users">批量添加人员</a>
+                  <a href="#import_users" data-toggle="modal">批量添加人员</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table id="user_info" class="table table-bordered table-striped">
@@ -40,7 +71,6 @@
             </div><!-- /.col -->
           </div><!-- /.row -->
         </section><!-- /.content -->
-
 
 @stop
 
