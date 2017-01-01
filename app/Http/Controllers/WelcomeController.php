@@ -104,6 +104,16 @@ class WelcomeController extends Controller
     		return $user->manage();
     	}
 
+    	public function manage_form()
+        {
+            $data = [
+            'url' => 'manage_form',
+            'title' => '表格管理'
+            ];
+            $user = new FormController($data);
+            return $user->index();
+        }
+
         // else
     	public function logout()
     	{
