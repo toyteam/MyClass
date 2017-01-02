@@ -6,64 +6,53 @@ use Illuminate\Database\Eloquent\Model;
 
 class FormModel extends Model
 {
- //    	public function getAllValidEvents()
- //    	{
- //    		return \DB::table('form')->select('*')->whereNotNull('form_close_time')->whereNotNull('form_delete_time')
- //    		->join('form_tcol', 'form.id', '=', 'form_col.form_col_form_id')->get();
- //    	}
+	public function createForm($form_title, $form_detail)
+	{
+		$data = [
+		'form_title' => $form_title,
+		'form_detail' => $form_detail,
+		'form_create_user_id' => session()->get('user_info')->id,
+		'form_create_time' => time()
+		];
 
- //    	public function getAllValidEventsBeMerged()
- //    	{
- //    		return $this->merge($this->getAllValidEvents());
- //    	}
+		return \DB::table('form')->insertGetId($data);
+	}
 
- //    	public function insertEvent($data)
- //    	{
- //    		$form_name = $data['form_name'];
+	public function getAllFrom()
+	{
+		return \DB::table('from')
+		->select('from_title', 'form_detail', 'user_name')
+		->join('user', 'user.id', '=', 'form.form_create_user_id')
+		->whereNull('user_delete_time')
+		->orderBy('form_create_time')
+		->get();
+	}
 
- //    		if(\DB::table('form')->select('*')->where('form_name','=',$event_name)->count()){
- //    			return "error: event name has existed ";
- //    		}
+	public function getPluginsOrderByNameLength()
+	{
+		return \DB::select('select id, plugin_name from plugin order by length(plugin_name)');
+	}
 
- //    		if(\DB::table('event')->insert(['event_name' => $event_name, 'isValid' => 1]) == 0){
- //    			return "insert event into table 'event' error";
- //    		}
+	public function getViewPathById($id)
+	{
+		return \DB::table('plugin')
+		->select('plugin_name', 'plugin_url')
+		->where('id', $id)
+		->get();
+	}
 
- //    		$event_info  = \DB::table('event')->select('*')->where('event_name', '=', $event_name)->first();
- //    		if($event_info == null){
- //    			return "select from table error";
- //    		}
+	public function getArrayPluginReplace($replaced, $replace)
+	{
+		foreach ($replace as $key => $value) {
+    		$replaced = str_replace('%'.$key.'%', $value, $replaced);
+    	}
 
- //    		$event_id = $event_info->id;
- //    		foreach ($data['cols_name'] as $col_name) {
- //    			if(\DB::table('eventcol')->insert(['event_id' => $event_id, 'col_name' => $col_name]) == 0){
- //    				return "insert col_name into table 'eventcol' error";
- //    			}
- //    		}
+    	$time = time();
+    	$replaced = str_replace('%id%', $time, $replaced);
+    	$replaced = str_replace('%name%', $time, $replaced);
+    	$replace['id'] = $time;
 
- //    		return 'success';
- //    	}
+    	return array($replaced,json_encode($replace));
+	}
 
- //    	public function deleteEvent($id)
- //    	{
- //    		return \DB::table('event')->where('id', '=', $id)->update(['isValid' => 0]);
- //    	}
-
- //    	private function merge($events)
-	// {
-	// 	$data = array();
-	// 	foreach ($events as  $event) {
-	// 		$event_name = $event->event_name;
-	// 		$event_id = $event->event_id;
-	// 		$col_id = $event->id;
-	// 		if(isset($data[$event_id])){
-	// 			$data[$event_id]->col_name[$col_id] = $event->col_name;
-	// 		}else{
-	// 			$tmp = $event;
-	// 			$tmp->col_name = array("$col_id" => "$event->col_name");
-	// 			$data[$event_id] = $tmp;
-	// 		}
-	// 	}
-	// 	return $data;
-	// }
 }

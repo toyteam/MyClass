@@ -45,7 +45,7 @@
 				<h1>添加插件</h1>
 				<div class="col-md-12 col-sm-12 col-xs-12 plugin-btn-group">
 					@foreach($plugins as $plugin)
-					<div class="form-group">
+					<div class="form-group col-md-6">
 						<button class="btn btn-lg btn-default btn-block btn-block-add" value="{{ $plugin->id }}">添加{{ $plugin->plugin_name }}</button>
 					</div>
 					@endforeach

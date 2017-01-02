@@ -26,7 +26,7 @@ class FormController extends Controller
 
 	public function create()
 	{
-		$plugins = \DB::select('select id, plugin_name from plugin order by length(plugin_name)');
+		$plugins = $this->form_db->getPluginsOrderByNameLength();
 		$data = [
         'url' => 'manage_form',
         'title' => '表格创建',
@@ -37,26 +37,19 @@ class FormController extends Controller
 
 	public function getPluginSet(Request $request)
 	{
-		$path = \DB::table('plugin')
-		->select('plugin_name', 'plugin_url')
-		->where('id', $request->get('plugin'))
-		->get();
+		$path = $this->form_db->getViewPathById($request->get('plugin'));
+
 		$data = view($path[0]->plugin_url .'modal');
+
 		return str_replace(["%title%","%url%"], [$path[0]->plugin_name, $path[0]->plugin_url], $data);
     }
 
     public function getPlugin(Request $request)
     {
-    	$data = view($request->get('plugin_url'));
-    	$arr = $request->all();
-    	foreach ($arr as $key => $value) {
-    		$data = str_replace('%'.$key.'%', $value, $data);
-    	}
-    	$time = time();
-    	$data = str_replace('%id%', $time, $data);
-    	$data = str_replace('%name%', $time, $data);
-    	$arr['id'] = $time;
-    	return array($data,json_encode($arr));
+    	$replaced = view($request->get('plugin_url'));
+    	$replace = $request->all();
+
+    	return $this->form_db->getArrayPluginReplace($replaced, $replace);
     }
 
 }

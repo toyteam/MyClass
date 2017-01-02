@@ -57,12 +57,12 @@ Route::group(['middleware' => ['web']], function () {
 
 	    		Route::get('/manage/notice', 'WelcomeController@manage_notice');
 	    		Route::get('/manage/user', 'WelcomeController@manage_user');
-	    		Route::get('/manage/form', 'WelcomeController@manage_form');
+	    		Route::any('/manage/form', 'WelcomeController@manage_form');
 
 	    		//form
-	    		Route::get('/manage/form/create', 'FormController@create');
+	    		Route::post('/manage/form/create', 'FormController@create');
 				Route::get('/manage/form/getpluginset','FormController@getPluginSet');
-				Route::any('/manage/form/getplugin','FormController@getPlugin');
+				Route::post('/manage/form/getplugin','FormController@getPlugin');
 				
 	    		// Route::get('/manage/user/import_user', 'UserController@import_user');
 	    		Route::get('/manage/user/import_users', 'UserController@importUsers');

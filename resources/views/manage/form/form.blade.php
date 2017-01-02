@@ -18,8 +18,8 @@
 
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">已建表单</h3>
-                  <a href="/manage/form/create">创建表单</a>
+                  <h3 class="box-title">已建表格</h3>
+                  <a href="#" id="create_form">创建表格</a>
                   <!-- <a href="/manage/user/import_users">批量添加人员</a> -->
                 </div><!-- /.box-header -->
                 <div class="box-body">
@@ -31,6 +31,45 @@
             </div><!-- /.col -->
           </div><!-- /.row -->
         </section><!-- /.content -->
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form id="form-info" class="form-horizontal form-label-left" method="post" action="/manage/form/create">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							&times;
+						</button>
+						<h4 class="modal-title" id="myModalLabel">
+							创建表格
+						</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-4">表格标题</label>
+							<div class="col-md-9 col-sm-9 col-xs-8">
+								<input type="text" name="form_title" class="form-control" placeholder="请输入表格标题">
+							</div>
+							<br><br>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-4">表格介绍</label>
+							<div class="col-md-9 col-sm-9 col-xs-8">
+								<textarea type="text" name="form_detail" class="form-control" placeholder="请输入表格介绍"></textarea>
+							</div>
+							<br><br>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" id="close" data-dismiss="modal">关闭</button>
+						<button type="submit" class="btn btn-primary" id="create">添加</button>
+					</div>
+					<input type="hidden" name="_token" value="{{csrf_token()}}">
+				</form>
+			</div>
+		</div>
+		<button id="modal-btn" class="hidden" data-toggle="modal" data-target="#myModal"></button>
+	</div>
 
 
 @stop
@@ -78,6 +117,9 @@
 			        }
 			}
 		});
+	});
+	$('#create_form').click(function(){
+		$('#modal-btn').click();
 	});
 </script>
 @stop
