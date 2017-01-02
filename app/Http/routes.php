@@ -60,7 +60,8 @@ Route::group(['middleware' => ['web']], function () {
 	    		Route::any('/manage/form', 'WelcomeController@manage_form');
 
 	    		//form
-	    		Route::post('/manage/form/create', 'FormController@create');
+	    		Route::post('/manage/form/create', 'FormController@getCreatePage');
+	    		Route::post('/manage/form/createform', 'FormController@createForm');
 				Route::get('/manage/form/getpluginset','FormController@getPluginSet');
 				Route::post('/manage/form/getplugin','FormController@getPlugin');
 				

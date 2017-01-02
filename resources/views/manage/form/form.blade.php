@@ -11,25 +11,47 @@
 
 @section('content')
 
-        <!-- Main content -->
-        <section class="content">
-          <div class="row">
-            <div class="col-xs-12">
-
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">已建表格</h3>
-                  <a href="#" id="create_form">创建表格</a>
-                  <!-- <a href="/manage/user/import_users">批量添加人员</a> -->
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table id="user_info" class="table table-bordered table-striped">
- 
-                  </table>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
-            </div><!-- /.col -->
-          </div><!-- /.row -->
+		<!-- Main content -->
+		<section class="content">
+			<div class="row">
+				<div class="col-xs-12">
+				 	<div class="box">
+						<div class="box-header">
+							<h3 class="box-title">已建表格</h3>
+							<a href="#" id="create_form">创建表格</a>
+							<!-- <a href="/manage/user/import_users">批量添加人员</a> -->
+						</div><!-- /.box-header -->
+						<div class="box-body">
+							<table id="user_info" class="table table-bordered table-striped">
+								<thead>
+									<tr>
+										<th>表格名称</th>
+										<th>表格介绍</th>
+										<th>表格创建者</th>
+										<th>表格创建时间</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach($forms as $key => $value)
+									<tr>
+										<td>{{$value->form_title}}</td>
+										<td>{{$value->form_detail}}</td>
+										<td>{{$value->user_name}}</td>
+										<td>{{$value->form_create_time}}</td>
+										<td>
+											<a title="重新编辑表格" href="#"><li class="fa fa-edit"></li>编辑</a>
+											&nbsp;&nbsp;&nbsp;&nbsp;
+											<a title="删除" href="#"><li class="fa fa-remove"></li>删除</a>
+										</td>
+									</tr>
+									@endforeach
+								</tbody>
+							</table>
+						</div><!-- /.box-body -->
+				 	</div><!-- /.box -->
+				</div><!-- /.col -->
+        	</div><!-- /.row -->
         </section><!-- /.content -->
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

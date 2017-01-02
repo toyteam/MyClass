@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FormModel extends Model
 {
-	public function createForm($form_title, $form_detail)
+	public function createFormAndGetId($form_title, $form_detail)
 	{
 		$data = [
 		'form_title' => $form_title,
@@ -18,14 +18,20 @@ class FormModel extends Model
 		return \DB::table('form')->insertGetId($data);
 	}
 
-	public function getAllFrom()
+	public function getAllForm()
 	{
-		return \DB::table('from')
-		->select('from_title', 'form_detail', 'user_name')
+		return \DB::table('form')
+		->select('form_title', 'form_detail', 'user_name', 'form_create_time')
 		->join('user', 'user.id', '=', 'form.form_create_user_id')
 		->whereNull('user_delete_time')
 		->orderBy('form_create_time')
 		->get();
+	}
+
+	public function insertFormCol($data = array())
+	{
+		return \DB::table('form_col')
+		->insert($data);
 	}
 
 	public function getPluginsOrderByNameLength()
@@ -36,7 +42,7 @@ class FormModel extends Model
 	public function getViewPathById($id)
 	{
 		return \DB::table('plugin')
-		->select('plugin_name', 'plugin_url')
+		->select('id', 'plugin_name', 'plugin_url')
 		->where('id', $id)
 		->get();
 	}
