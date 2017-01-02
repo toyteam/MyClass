@@ -21,19 +21,13 @@
                 <h4 class="modal-title" id="myModalLabel">批量添加人员</h4>
             </div>
             <div class="modal-body">
-              <div class="form-group">
-                <div class="col-md-3">
-                  <a href="/download/model.xls"><button class="btn btn-default">excel模板下载</button></a>
-                </div>
-                <div class="col-md-9">
-                    <form method="POST" action="{{url('excel/importUsers')}}" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <input id="excel_users" name="excel_users" type="file" style="display:none">
-                    <span class="input-group-addon" onclick="$('input[id=excel_users]').click();" style="cursor: pointer; "><i class="fa fa-folder-open"></i>选择文件</span>
-                    <input id="photoCover" class="form-control" type="submit">
+                  <a href="/download/model.xls" class="col-md-4">excel模板下载</a>
+                  <form class="col-md-8" method="POST" action="{{url('excel/importUsers')}}" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <input  type="file" name="excel_users" style="display:inline;" />
+                            <input type="submit"  value="导入" style="display:inline;"/>
                   </form>
-                </div>
-              </div>
+                  <br />
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
