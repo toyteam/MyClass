@@ -44,7 +44,7 @@ class WelcomeController extends Controller
     		'title' => '表格填写'
     		];
     		$form = new FormController($data);
-    		return $form->index();
+    		return $form->index('life.form.form');
     	}
 
         // info

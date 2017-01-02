@@ -18,7 +18,6 @@
 				 	<div class="box">
 						<div class="box-header">
 							<h3 class="box-title">已建表格</h3>
-							<a href="#" id="create_form">创建表格</a>
 							<!-- <a href="/manage/user/import_users">批量添加人员</a> -->
 						</div><!-- /.box-header -->
 						<div class="box-body">
@@ -29,21 +28,17 @@
 										<th>表格介绍</th>
 										<th>表格创建者</th>
 										<th>表格创建时间</th>
-										<th>操作</th>
+										<th>状态</th>
 									</tr>
 								</thead>
 								<tbody>
 									@foreach($forms as $key => $value)
 									<tr>
-										<td>{{$value->form_title}}</td>
+										<td><a href="/life/form/fill?formid={{ $value->id }}">{{$value->form_title}}</a></td>
 										<td>{{$value->form_detail}}</td>
 										<td>{{$value->user_name}}</td>
 										<td>{{date('Y-m-d H:i:s', $value->form_create_time)}}</td>
-										<td>
-											<a title="重新编辑表格" href="#"><li class="fa fa-edit"></li>编辑</a>
-											&nbsp;&nbsp;&nbsp;&nbsp;
-											<a title="删除" href="#"><li class="fa fa-remove"></li>删除</a>
-										</td>
+										<td><label class="label label-danger">未填</label></td>
 									</tr>
 									@endforeach
 								</tbody>
@@ -53,45 +48,6 @@
 				</div><!-- /.col -->
         	</div><!-- /.row -->
         </section><!-- /.content -->
-
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form id="form-info" class="form-horizontal form-label-left" method="post" action="/manage/form/create">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-							&times;
-						</button>
-						<h4 class="modal-title" id="myModalLabel">
-							创建表格
-						</h4>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-4">表格标题</label>
-							<div class="col-md-9 col-sm-9 col-xs-8">
-								<input type="text" name="form_title" class="form-control" placeholder="请输入表格标题">
-							</div>
-							<br><br>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-4">表格介绍</label>
-							<div class="col-md-9 col-sm-9 col-xs-8">
-								<textarea type="text" name="form_detail" class="form-control" placeholder="请输入表格介绍"></textarea>
-							</div>
-							<br><br>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" id="close" data-dismiss="modal">关闭</button>
-						<button type="submit" class="btn btn-primary" id="create">添加</button>
-					</div>
-					<input type="hidden" name="_token" value="{{csrf_token()}}">
-				</form>
-			</div>
-		</div>
-		<button id="modal-btn" class="hidden" data-toggle="modal" data-target="#myModal"></button>
-	</div>
 
 
 @stop
@@ -139,9 +95,6 @@
 			        }
 			}
 		});
-	});
-	$('#create_form').click(function(){
-		$('#modal-btn').click();
 	});
 </script>
 @stop

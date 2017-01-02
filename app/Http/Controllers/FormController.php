@@ -19,10 +19,12 @@ class FormController extends Controller
 		$this->data = $data;
 	}
 
-	public function index()
+	public function index($view = '')
 	{
 		$this->data['forms'] = $this->form_db->getAllForm();
-		return view('manage.form.form', $this->data);
+		if($view == '')
+			return view('manage.form.form', $this->data);
+		return view($view, $this->data);
 	}
 
 	public function getCreatePage(Request $request)
@@ -79,6 +81,26 @@ class FormController extends Controller
     	return $this->form_db->getArrayPluginReplace($replaced, $replace);
     }
 
-    
+    public function formFill(Request $request)
+    {
+    	if($request->has('formid'))
+    	{
+    		$form = $this->form_db->getFormColByFormId($request->get('formid'));
+
+    		$plugins = array();
+    		foreach ($form['col'] as $key => $value) {
+    			 $plugins[] = $this->form_db->getViewPluginByCol($value);
+    		}
+
+    		$data = [
+    		'url' => 'life_form',
+    		'title' => '表格填写',
+    		'form_name' => $form['form'][0]->form_title,
+    		'plugins' => $plugins
+    		];
+    		return view('life.form.fill', $data);
+    	}
+    	return redirect('/life/form');
+    }
 
 }
