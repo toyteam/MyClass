@@ -1,8 +1,6 @@
-<div class="from-group from-inline">
+
 	<label class="control-label col-md-3 col-sm-3 col-xs-4">%label%</label>
 	<div class="col-md-8 col-sm-8 col-xs-7" id="%id%"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button type="button" value="%id%" class="plugin-close btn btn-default">&times;</button>
-</div>
 <br />
 <script>
 	var values = "%values%";

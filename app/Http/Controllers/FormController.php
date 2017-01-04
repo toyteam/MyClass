@@ -19,12 +19,16 @@ class FormController extends Controller
 		$this->data = $data;
 	}
 
-	public function index($view = '')
+	public function index()
 	{
 		$this->data['forms'] = $this->form_db->getAllForm();
-		if($view == '')
-			return view('manage.form.form', $this->data);
-		return view($view, $this->data);
+		return view('manage.form.form', $this->data);
+	}
+
+	public function lifeForm()
+	{
+		$this->data['forms'] = $this->form_db->getAllFormStatus();
+		return view('life.form.form', $this->data);
 	}
 
 	public function getCreatePage(Request $request)
@@ -45,6 +49,7 @@ class FormController extends Controller
 
 		$form_id = $this->form_db->createFormAndGetId($request->title, $request->detail);
 
+		$int = 1;
 		foreach ($str as $key => $value) {
 			$form_col_data = json_decode($value);
 			$plugin_id = $form_col_data->plugin_id;
@@ -56,9 +61,11 @@ class FormController extends Controller
 			$data = [
 			'form_col_form_id' => $form_id,
 			'form_col_data' => json_encode($form_col_data),
-			'form_col_plugin_id' => $plugin_id
+			'form_col_plugin_id' => $plugin_id,
+			'form_col_order_id' => $int
 			];
 			$this->form_db->insertFormCol($data);
+			$int = $int + 1;
 		}
 
 		return redirect('manage/form');
@@ -81,25 +88,53 @@ class FormController extends Controller
     	return $this->form_db->getArrayPluginReplace($replaced, $replace);
     }
 
-    public function formFill(Request $request)
+    public function getFormFillPage(Request $request)
     {
     	if($request->has('formid'))
     	{
     		$form = $this->form_db->getFormColByFormId($request->get('formid'));
+			
+			$plugins = array();
+			$value_data = '';
+    		
+    		if($this->form_db->formHasFill($request->get('formid')))
+				$value_data = $this->form_db->getUserFormData($request->get('formid'));
 
-    		$plugins = array();
-    		foreach ($form['col'] as $key => $value) {
-    			 $plugins[] = $this->form_db->getViewPluginByCol($value);
-    		}
+				foreach ($form['col'] as $key => $value) {	
+					$plugins[] = $this->form_db->getViewPluginByCol($value, $value_data[0]->user_form_data);
+				}
+    		
+
 
     		$data = [
     		'url' => 'life_form',
     		'title' => '表格填写',
     		'form_name' => $form['form'][0]->form_title,
+    		'form_id' => $request->get('formid'),
     		'plugins' => $plugins
     		];
     		return view('life.form.fill', $data);
     	}
+    	return redirect('/life/form');
+    }
+
+    public function fillFormSubmit(Request $request)
+    {
+    	$all = $request->all();
+
+    	unset($all['submit']);
+    	unset($all['_token']);
+
+    	$data = [
+    	'user_form_user_id' => session()->get('user_info')->id,
+    	'user_form_form_id' => $request->get('form_id'),
+    	'user_form_data' => json_encode($all),
+    	'user_form_create_time' => time()
+    	];
+    	if($this->form_db->formHasFill($request->get('form_id')))
+    		$this->form_db->formSubmitUpdate($data, $request->get('form_id'));
+    	else
+			$this->form_db->formSubmitInsert($data);
     	return redirect('/life/form');
     }
 

@@ -1,10 +1,8 @@
-<div class="form-group">
+
 	<label class="control-label col-md-3 col-sm-3 col-xs-4">%label%</label>
 	<div class="col-md-8 col-sm-8 col-xs-7">
 		<select class="form-control" name="%name%" id="%id%"></select>
 	</div>
-	<button type="button" value="%id%" class="plugin-close btn btn-default">&times;</button>
-</div>
 
 <script>
 	var values = "%values%";

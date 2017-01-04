@@ -1,12 +1,9 @@
 <link rel="stylesheet" href="{{asset('AdminLTE2')}}/plugins/daterangepicker/daterangepicker-bs3.css">
 
-<div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-4">%label%</label>
     <div class="col-md-8 col-sm-8 col-xs-7">
         <input type="text" class="form-control" id="%id%" name="%name%" placeholder="%placeholder%" value="%value%">
     </div>
-    <button type="button" value="%id%" class="plugin-close btn btn-default">&times;</button>
-</div>
 
 <script src="{{asset('AdminLTE2')}}/plugins/moment/moment.min.js"></script>
 <script src="{{asset('AdminLTE2')}}/plugins/daterangepicker/daterangepicker.js"></script>

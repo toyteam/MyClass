@@ -35,7 +35,7 @@
 								<tbody>
 									@foreach($forms as $key => $value)
 									<tr>
-										<td>{{$value->form_title}}</td>
+										<td><a href="#">{{$value->form_title}}</a></td>
 										<td>{{$value->form_detail}}</td>
 										<td>{{$value->user_name}}</td>
 										<td>{{date('Y-m-d H:i:s', $value->form_create_time)}}</td>

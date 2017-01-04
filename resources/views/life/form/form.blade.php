@@ -38,7 +38,13 @@
 										<td>{{$value->form_detail}}</td>
 										<td>{{$value->user_name}}</td>
 										<td>{{date('Y-m-d H:i:s', $value->form_create_time)}}</td>
-										<td><label class="label label-danger">未填</label></td>
+										<td>
+										@if($value->user_form_data == null)
+											<label class="label label-danger">未填</label>
+										@else
+											<label class="label label-success">已填</label>
+										@endif
+										</td>
 									</tr>
 									@endforeach
 								</tbody>

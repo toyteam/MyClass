@@ -1,4 +1,4 @@
-<div class="form-group">
+
 	<label class="control-label col-md-3 col-sm-3 col-xs-4">%label%</label>
 	<div class="col-md-8 col-sm-8 col-xs-7" id="%id%">
 		<div class="col-md-3 col-sm-3">
@@ -14,8 +14,6 @@
 			<input type="text" id="%id%_detail" name="%id%_detail" class="form-control" placeholder="%placeholder%" value="%value%">
 		</div>
 	</div>
-	<button type="button" value="%id%" class="plugin-close btn btn-default">&times;</button>
-</div>
 
 <script src="{{asset('AdminLTE2')}}/plugins/distpicker/dist/distpicker.js"></script>
 

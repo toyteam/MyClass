@@ -61,6 +61,7 @@ CREATE TABLE `form_col` (
   `form_col_form_id` int(11) DEFAULT NULL,
   `form_col_data` text COLLATE utf8_unicode_ci,
   `form_col_plugin_id` int(11) DEFAULT NULL,
+  `form_col_order_id` double DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

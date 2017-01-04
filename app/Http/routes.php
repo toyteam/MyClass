@@ -46,7 +46,8 @@ Route::group(['middleware' => ['web']], function () {
 	    	Route::get('/life/form', 'WelcomeController@life_form');
 
 	    	//life/form
-	    	Route::get('/life/form/fill', 'FormController@formFill');
+	    	Route::get('/life/form/fill', 'FormController@getFormFillPage');
+	    	Route::post('/life/form/submit', 'FormController@fillFormSubmit');
 
 	    	// info
 	    	Route::get('info/check', 'WelcomeController@info_check');
