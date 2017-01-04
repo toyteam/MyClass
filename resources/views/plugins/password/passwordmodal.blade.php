@@ -29,5 +29,5 @@
 		<br><br>
 	</div>
 </div>
-<input type="hidden" name="plugin" value="%title%">
-<input type="hidden" name="plugin_url" value="%url%">
+<input type="hidden" name="plugin_id" value="%plugin_id%">
+<input type="hidden" name="plugin_url" value="%plugin_url%">

@@ -33,10 +33,14 @@
 				<h1>表格预览</h1>
 				<div class="col-md-12 col-sm-12">
 					<br /><br /><br />
-					<form class="form-horizontal form-label-left" method="post">
+					<form class="form-horizontal form-label-left" method="post" action="/manage/form/createform">
 						<div id="form-show"></div>
 						<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
 							<input class="btn btn-primary btn-lg btn-block" type="submit" name="submit" value="创建">
+							<input type="hidden" name="_token" value="{{csrf_token()}}"/>
+							<input type="hidden" id="data" name="data" value="">
+							<input type="hidden" id="title" name="title" value="{{ $form['form_title'] }}">
+							<input type="hidden" id="detail" name="detail" value="{{ $form['form_detail'] }}">
 						</div>
 					</form>
 				</div>
@@ -45,7 +49,7 @@
 				<h1>添加插件</h1>
 				<div class="col-md-12 col-sm-12 col-xs-12 plugin-btn-group">
 					@foreach($plugins as $plugin)
-					<div class="form-group">
+					<div class="form-group col-md-6">
 						<button class="btn btn-lg btn-default btn-block btn-block-add" value="{{ $plugin->id }}">添加{{ $plugin->plugin_name }}</button>
 					</div>
 					@endforeach
@@ -68,7 +72,6 @@
 		</div>
 		<button id="modal-btn" class="hidden" data-toggle="modal" data-target="#myModal"></button>
 	</div>
-	<input type="hidden" id="data" name="data" value="">
 	<script>
 		$(document).ready(function() {
 			$('.btn-block-add').click(function(e) {

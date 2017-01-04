@@ -14,9 +14,9 @@
 <script>
   $(document).ready(function(){
   	$('#%id%').daterangepicker({
-      timePicker: false, 
+      timePicker: true, 
       timePickerIncrement: 30,
-  		singleDatePicker:true,
+  		singleDatePicker:false,
   		format:"YYYY/MM/DD HH:mm A",
   		locale:{
         applyLabel: '确定',

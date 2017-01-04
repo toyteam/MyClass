@@ -45,24 +45,28 @@ Route::group(['middleware' => ['web']], function () {
 	    	Route::get('/life/fund', 'WelcomeController@life_fund');
 	    	Route::get('/life/form', 'WelcomeController@life_form');
 
+	    	//life/form
+	    	Route::get('/life/form/fill', 'FormController@formFill');
+
 	    	// info
 	    	Route::get('info/check', 'WelcomeController@info_check');
 	    	Route::get('info/edit', 'WelcomeController@info_edit');
 	    	Route::post('info/edit', 'UserController@editInfo');
 	    	Route::get('info/password_edit', 'WelcomeController@info_password_edit');
-		Route::post('info/password_edit', 'UserController@editPassword');
+			Route::post('info/password_edit', 'UserController@editPassword');
 
 	    	// manage
 	    	Route::group(['middleware' => 'isadmin'], function(){
 
 	    		Route::get('/manage/notice', 'WelcomeController@manage_notice');
 	    		Route::get('/manage/user', 'WelcomeController@manage_user');
-	    		Route::get('/manage/form', 'WelcomeController@manage_form');
+	    		Route::any('/manage/form', 'WelcomeController@manage_form');
 
-	    		//form
-	    		Route::get('/manage/form/create', 'FormController@create');
+	    		//manage/form
+	    		Route::post('/manage/form/create', 'FormController@getCreatePage');
+	    		Route::post('/manage/form/createform', 'FormController@createForm');
 				Route::get('/manage/form/getpluginset','FormController@getPluginSet');
-				Route::any('/manage/form/getplugin','FormController@getPlugin');
+				Route::post('/manage/form/getplugin','FormController@getPlugin');
 				
 	    		// Route::get('/manage/user/import_user', 'UserController@import_user');
 	    		Route::get('/manage/user/import_users', 'UserController@importUsers');
@@ -79,7 +83,6 @@ Route::group(['middleware' => ['web']], function () {
 	    	// not finish
 	    	Route::group(['middleware' => 'isnotpublic'], function(){
 	    		Route::get('/life/fund', 'WelcomeController@life_fund');
-	    		Route::get('/life/form', 'WelcomeController@life_form');
 	    	});
 	    	
 	});
