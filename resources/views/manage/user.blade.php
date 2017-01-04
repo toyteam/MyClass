@@ -21,12 +21,14 @@
                 <h4 class="modal-title" id="myModalLabel">批量添加人员</h4>
             </div>
             <div class="modal-body">
-                  <a href="/download/model.xls" class="col-md-4">excel模板下载</a>
+                  <a href="/download/model.xls" class="col-md-4"><button class="btn btn-primary">excel模板下载</button></a>
                   <form class="col-md-8" method="POST" action="{{url('excel/importUsers')}}" enctype="multipart/form-data">
                             {{ csrf_field() }}
-                            <input  type="file" name="excel_users" style="display:inline;" />
-                            <input type="submit"  value="导入" style="display:inline;"/>
+                            <input  type="file" name="excel_users" onchange="$('[name=submit]').click()" style="display:none;" />
+                            <input type="submit" name="submit"  value="导入" style="display:none;"/>
+                            <button class="btn btn-primary" type="button" onclick="$('[name=excel_users]').click()">excel文件导入</button>
                   </form>
+                  <br />
                   <br />
             </div>
             <div class="modal-footer">
@@ -76,6 +78,7 @@
 <script src="{{asset('AdminLTE2')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
     <!-- page script -->
 <script>
+
 	$(function () {
 		$('#user_info').DataTable({
 			"paging": true,
