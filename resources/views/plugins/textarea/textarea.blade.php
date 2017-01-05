@@ -5,6 +5,7 @@
 
 <script>
 	$('.plugin-close').click(function(e){
+		console.log($(e.target).val());
 		$(e.target).parent().remove();
 		var t = $('#data').val().substring(4, $('#data').val().length).split('%%@@');
 		var arr = "";

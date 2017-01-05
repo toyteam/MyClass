@@ -21,7 +21,7 @@ class FormController extends Controller
 
 	public function index()
 	{
-		$this->data['forms'] = $this->form_db->getAllForm();
+		$this->data['forms'] = $this->form_db->getAllFormInfo();
 		return view('manage.form.form', $this->data);
 	}
 
@@ -97,12 +97,13 @@ class FormController extends Controller
 			$plugins = array();
 			$value_data = '';
     		
-    		if($this->form_db->formHasFill($request->get('formid')))
-				$value_data = $this->form_db->getUserFormData($request->get('formid'));
-
-				foreach ($form['col'] as $key => $value) {	
-					$plugins[] = $this->form_db->getViewPluginByCol($value, $value_data[0]->user_form_data);
-				}
+    		if($this->form_db->formHasFill($request->get('formid'))) {
+				$temp_data = $this->form_db->getUserFormData($request->get('formid'));
+				$value_data = is_array($temp_data) ? $temp_data[0]->user_form_data : '';
+			}
+			foreach ($form['col'] as $key => $value) {	
+				$plugins[] = $this->form_db->getViewPluginByCol($value, $value_data);
+			}
     		
 
 
@@ -136,6 +137,18 @@ class FormController extends Controller
     	else
 			$this->form_db->formSubmitInsert($data);
     	return redirect('/life/form');
+    }
+
+    public function deleteForm(Request $request)
+    {
+    	if($request->has('formid'))
+    	{
+    		if($this->form_db->formIsExist($request->get('formid')))
+    		{
+    			$this->form_db->deleteForm($request->get('formid'));
+    		}
+    	}
+    	return redirect('/manage/form');
     }
 
 }

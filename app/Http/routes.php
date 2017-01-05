@@ -65,7 +65,9 @@ Route::group(['middleware' => ['web']], function () {
 
 	    		//manage/form
 	    		Route::post('/manage/form/create', 'FormController@getCreatePage');
+	    		Route::get('/manage/form/deleteform', 'FormController@deleteForm');
 	    		Route::post('/manage/form/createform', 'FormController@createForm');
+				Route::get('/manage/form/getforminfo','FormController@getEditedFormInfo');
 				Route::get('/manage/form/getpluginset','FormController@getPluginSet');
 				Route::post('/manage/form/getplugin','FormController@getPlugin');
 				
