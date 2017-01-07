@@ -46,8 +46,8 @@ Route::group(['middleware' => ['web']], function () {
 	    	Route::get('/life/form', 'WelcomeController@life_form');
 
 	    	//life/form
-	    	Route::get('/life/form/fill', 'FormController@getFormFillPage');
-	    	Route::post('/life/form/submit', 'FormController@fillFormSubmit');
+	    	Route::get('/life/form/fill', 'FormController@fill');
+	    	Route::post('/life/form/submit', 'FormController@fillForm');
 
 	    	// info
 	    	Route::get('info/check', 'WelcomeController@info_check');
@@ -64,10 +64,10 @@ Route::group(['middleware' => ['web']], function () {
 	    		Route::any('/manage/form', 'WelcomeController@manage_form');
 
 	    		//manage/form
-	    		Route::post('/manage/form/create', 'FormController@getCreatePage');
+	    		Route::post('/manage/form/create', 'FormController@create');
+	    		Route::get('/manage/form/datatable', 'FormController@datatable');
 	    		Route::get('/manage/form/deleteform', 'FormController@deleteForm');
 	    		Route::post('/manage/form/createform', 'FormController@createForm');
-				Route::get('/manage/form/getforminfo','FormController@getEditedFormInfo');
 				Route::get('/manage/form/getpluginset','FormController@getPluginSet');
 				Route::post('/manage/form/getplugin','FormController@getPlugin');
 				

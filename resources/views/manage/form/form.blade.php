@@ -35,7 +35,7 @@
 								<tbody>
 									@foreach($forms as $key => $value)
 									<tr>
-										<td>{{$value->form_title}}</td>
+										<td><a href="/manage/form/datatable?formid={{$value->id}}">{{$value->form_title}}</a></td>
 										<td>{{$value->form_detail}}</td>
 										<td>{{$value->user_name}}</td>
 										<td>{{date('Y-m-d H:i:s', $value->form_create_time)}}</td>
@@ -68,7 +68,7 @@
 						<div class="form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-4">表格标题</label>
 							<div class="col-md-9 col-sm-9 col-xs-8">
-								<input type="text" name="form_title" class="form-control" placeholder="请输入表格标题">
+								<input type="text" id="form_title" name="form_title" class="form-control" placeholder="请输入表格标题">
 							</div>
 							<br><br>
 						</div>
@@ -90,47 +90,6 @@
 		</div>
 		<button id="modal-btn" class="hidden" data-toggle="modal" data-target="#myModal"></button>
 	</div>
-
-    <div class="modal fade" id="myModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form id="form-info" class="form-horizontal form-label-left" method="post" action="/manage/form/edit">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-							&times;
-						</button>
-						<h4 class="modal-title" id="myModalLabel">
-							创建表格
-						</h4>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-4">表格标题</label>
-							<div class="col-md-9 col-sm-9 col-xs-8">
-								<input id="edit-form-title" type="text" name="form_title" class="form-control" placeholder="请输入表格标题">
-							</div>
-							<br><br>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-4">表格介绍</label>
-							<div class="col-md-9 col-sm-9 col-xs-8">
-								<textarea id="edit-form-detail" type="text" name="form_detail" class="form-control" placeholder="请输入表格介绍"></textarea>
-							</div>
-							<br><br>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" id="close" data-dismiss="modal">关闭</button>
-						<button type="submit" class="btn btn-primary" id="create">编辑</button>
-					</div>
-					<input type="hidden" name="_token" value="{{csrf_token()}}">
-					<input id="edit-form-id" type="hidden" name="formid" value="">
-				</form>
-			</div>
-		</div>
-		<button id="modal-btn-edit" class="hidden" data-toggle="modal" data-target="#myModalEdit"></button>
-	</div>
-
 @stop
 
 
@@ -179,25 +138,9 @@
 	});
 	$('#create_form').click(function(){
 		$('#modal-btn').click();
-	});
-
-	$('.edit').click(function(e){
-		$.ajax({
-			type: "GET",
-			url: '/manage/form/getforminfo?formid='+$(e.target).val(),
-			async: false,
-			error: function(request) {
-			    alert("表格不存在！");
-			},
-			success: function(data) {
-				console.log(data[0]);
-				$('#edit-form-title').val(data[0]['form_title']);
-				$('#edit-form-detail').val(data[0]['form_detail']);
-				$('#edit-form-id').val(data[0]['id']);
-				$('#modal-btn-edit').click();
-			}
-				});
-		// $('#form-edit-title')
+		setTimeout(function () { 
+			$('#form_title').focus();
+		}, 500);
 	});
 </script>
 @stop
