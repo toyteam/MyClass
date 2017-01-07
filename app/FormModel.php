@@ -164,7 +164,8 @@ class FormModel extends Model
 		$pluginhtml = str_replace('%id%', $idreplace, $pluginhtml);
 		$pluginhtml = str_replace('%name%', $idreplace, $pluginhtml);
 
-		$pluginhtml = '<div class="form-group">'.$pluginhtml;
+		$pluginhtml = '<div class="form-group"><label class="control-label col-md-3 col-sm-3 col-xs-4">'.$sourse['label'].'</label>
+							<div class="col-md-8 col-sm-8 col-xs-7">'.$pluginhtml.'</div>';
 		if($flag)
 		{
 			$pluginhtml = $pluginhtml.'<button type="button" value="'.$idreplace.'" class="plugin-close btn btn-default">&times;</button>';

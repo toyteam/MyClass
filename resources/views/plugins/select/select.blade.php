@@ -1,8 +1,4 @@
-
-	<label class="control-label col-md-3 col-sm-3 col-xs-4">%label%</label>
-	<div class="col-md-8 col-sm-8 col-xs-7">
-		<select class="form-control" name="%name%" id="%id%"></select>
-	</div>
+<select class="form-control" name="%name%" id="%id%"></select>
 
 <script>
 	var values = "%values%";
@@ -14,7 +10,6 @@
 
 
 <!-- 
-	%label%:         控件标签
 	%name%:          控件name
 	%id%:            控件id
 

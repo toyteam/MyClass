@@ -150,7 +150,7 @@ class FormController extends Controller
 	{
 		$path = $this->form_db->getPluginsUrlByPluginId($request->get('plugin'));
 
-		$data = view($path[0]->plugin_url .'modal');
+		$data = view($path[0]->plugin_url .'Model');
 
 		return str_replace(["%title%","%plugin_url%", "%plugin_id%"], [$path[0]->plugin_name, $path[0]->plugin_url, $path[0]->id], $data);
     }

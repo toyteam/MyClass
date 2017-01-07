@@ -1,7 +1,4 @@
-
-	<label class="control-label col-md-3 col-sm-3 col-xs-4">%label%</label>
-	<div class="col-md-8 col-sm-8 col-xs-7" id="%id%"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<br />
+<div id="%id%"></div>
 
 <script>
 	var values = "%values%";
