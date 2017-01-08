@@ -55,7 +55,7 @@ class FormController extends Controller
 			}
 
 			foreach ($form as $key => $value) {	
-				$plugins[] = $this->form_db->getPluginByColInfo(view($value->plugin_url), json_decode($value->form_col_data), $value->form_col_order_id, $value_data);
+				$plugins[] = $this->form_db->getPluginByColInfo(view($value->plugin_url), json_decode($value->form_col_data, true), $value->form_col_order_id, $value_data);
 			}
 
 			$data = [
@@ -105,12 +105,13 @@ class FormController extends Controller
 
 		$int = 1;
 		foreach ($str as $key => $value) {
-			$form_col_data = json_decode($value);
-			$plugin_id = $form_col_data->plugin_id;
-			unset($form_col_data->_token);
-			unset($form_col_data->id);
-			unset($form_col_data->plugin_url);
-			unset($form_col_data->plugin_id);
+			$form_col_data = json_decode($value, true);
+			$plugin_id = $form_col_data['plugin_id'];
+
+			unset($form_col_data['_token']);
+			unset($form_col_data['id']);
+			unset($form_col_data['plugin_url']);
+			unset($form_col_data['plugin_id']);
 			
 			$data = [
 			'form_col_form_id' => $formid,
