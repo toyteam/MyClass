@@ -1,6 +1,6 @@
 @extends('common.layouts')
 
-@section('content')
+@section('MyCss')
 	<style type="text/css">
 		.must{
 			padding-left: 1.5em;
@@ -27,6 +27,9 @@
 
 		
 	</style>
+@stop
+
+@section('content')
 	<div class="row" style="padding-left: 1.5em; padding-right: 1.5em; ">
 		<div class="text-center">
 			<div class="col-md-7 col-sm-5 background-white text-center">
@@ -72,6 +75,9 @@
 		</div>
 		<button id="modal-btn" class="hidden" data-toggle="modal" data-target="#myModal"></button>
 	</div>
+@stop
+
+@section('MyJavascript')
 	<script>
 		$(document).ready(function() {
 			$('.btn-block-add').click(function(e) {

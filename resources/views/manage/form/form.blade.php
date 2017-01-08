@@ -19,7 +19,6 @@
 						<div class="box-header">
 							<h3 class="box-title">已建表格</h3>
 							<a href="#" id="create_form">创建表格</a>
-							<!-- <a href="/manage/user/import_users">批量添加人员</a> -->
 						</div><!-- /.box-header -->
 						<div class="box-body">
 							<table id="user_info" class="table table-bordered table-striped">
@@ -39,9 +38,7 @@
 										<td>{{$value->form_detail}}</td>
 										<td>{{$value->user_name}}</td>
 										<td>{{date('Y-m-d H:i:s', $value->form_create_time)}}</td>
-										<td>
-											<a title="删除" href="/manage/form/deleteform?formid={{ $value->id }}"><li class="fa fa-remove"></li>删除</a>
-										</td>
+										<td><a title="删除" href="/manage/form/deleteform?formid={{ $value->id }}"><li class="fa fa-remove"></li>删除</a></td>
 									</tr>
 									@endforeach
 								</tbody>
