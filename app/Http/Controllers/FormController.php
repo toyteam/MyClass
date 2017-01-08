@@ -20,23 +20,26 @@ class FormController extends Controller
 	public function index()
 	{
 		$this->data['forms'] = $this->form_db->getAllFormInfoJoinUserOrderByCreateTime();
+		$this->data['number'] =  $this->form_db->getFormNotFillNumber();
 		return view('manage.form.form', $this->data);
 	}
 
 	public function lifeForm()
 	{
 		$this->data['forms'] = $this->form_db->getAllFormInfoJoinUserLeftJoinUserFormOrderByCreateTime();
+		$this->data['number'] =  $this->form_db->getFormNotFillNumber();
 		return view('life.form.form', $this->data);
 	}
 
 	public function create(Request $request)
 	{
 		$data = [
-        'url' => 'manage_form',
-        'title' => '表格创建',
-        'plugins' => $this->form_db->getAllPluginsInfoOrderByNameLength(),
-        'form' => $request->all()
-        ];
+		'url' => 'manage_form',
+		'title' => '表格创建',
+		'number' => $this->form_db->getFormNotFillNumber(),
+		'plugins' => $this->form_db->getAllPluginsInfoOrderByNameLength(),
+		'form' => $request->all()
+		];
 		return view('manage.form.create', $data);
 	}
 
@@ -61,6 +64,7 @@ class FormController extends Controller
 			$data = [
 			'url' => 'life_form',
 			'title' => '表格填写',
+			'number' => $this->form_db->getFormNotFillNumber(),
 			'form_name' => $this->form_db->getFormInfoByFormId($request->get('formid'))[0]->form_title,
 			'form_id' => $request->get('formid'),
 			'plugins' => $plugins
@@ -80,6 +84,7 @@ class FormController extends Controller
 			$data = [
 			'url' => 'manage_form',
 			'title' => $form_title.'表数据',
+			'number' => $this->form_db->getFormNotFillNumber(),
 			'th' => $plugins_label,
 			'data' => $all_user_form_data
 			];
@@ -160,8 +165,9 @@ class FormController extends Controller
 	{
 		$pluginhtml = view($request->get('plugin_url'));
 		$sourse = $request->all();
-
-		return array($this->form_db->replacePLuginPlaceholder($pluginhtml, $sourse, time()), json_encode($sourse));
+		$time = time();
+		$sourse['id'] = $time;
+		return array($this->form_db->replacePLuginPlaceholder($pluginhtml, $sourse, $time), json_encode($sourse));
 	}
 
 	public function deleteForm(Request $request)

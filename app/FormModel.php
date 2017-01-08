@@ -139,6 +139,13 @@ class FormModel extends Model
 					 right join user on user.id = user_form_user_id");
 	}
 
+	public function getFormNotFillNumber()
+	{
+		$form_number = \DB::table('form')->whereNull('form_delete_time')->count();
+		$fill_number = \DB::table('user_form')->where('user_form_user_id', '=', session()->get('user_info')->id)->count();
+		return $form_number - $fill_number;
+	}
+
 	public function getAllFormColDataLabelByFormId($formid)
 	{
 		$all_form_cols = \DB::table('form_col')

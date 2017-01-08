@@ -126,6 +126,7 @@
                 <i class="fa fa-pie-chart"></i>
                 <span>生活管理</span>
                 <i class="fa fa-angle-left pull-right"></i>
+                @if(isset($number)&&$number>0)<small class="label pull-right bg-red">{{ $number }}</small>@endif
               </a>
               <ul class="treeview-menu">
                 <li id="life_budget"><a href="#"><i class="fa fa-circle-o"></i>班费公示</a></li>
