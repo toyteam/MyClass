@@ -11,7 +11,7 @@
 |form_col_name           |varchar         |50		          |	        |        |	no	      |列的名称            |
 |form_col_data           |text            |0		          |	        |        |	no	      |列的默认参数和数据   |
 |form_col_plugin_id      |int             |0		          |	        |        |	no	      |列的控件id          |
-|form_col_order_id       |text            |0		          |	        |        |	no	      |列的顺序            |
+|form_col_order_id       |int             |0		          |	        |        |	no	      |列的顺序            |
 
 ##notice
 ###公告表
