@@ -162,8 +162,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i>信息查看</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>信息修改</a></li>
+                <li id="info_check"><a href="{{ url('info/check') }}"><i class="fa fa-circle-o"></i>信息查看</a></li>
+                <li id="info_edit"><a href="{{ url('info/edit') }}"><i class="fa fa-circle-o"></i>信息修改</a></li>
+                <li id="info_password_edit"><a href="{{ url('info/password_edit') }}"><i class="fa fa-circle-o"></i>密码修改</a></li>
               </ul>
             </li>
 

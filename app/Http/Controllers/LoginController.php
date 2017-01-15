@@ -22,7 +22,6 @@ class LoginController extends Controller
 
     	public function check(Request $request)
     	{
-
     		$validator = \Validator::make($request->input(),[
     			'user_sno' => 'required',
     			'user_pw' =>'required'
