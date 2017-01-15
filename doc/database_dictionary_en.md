@@ -62,7 +62,7 @@
 | form_col_name | varchar | 50 ||| no | The name of the column |
 | form_col_data | text | 0 ||| no | The default value for columns|
 | form_col_plugin_id | int | 0 ||| no | The control id for the column|
-| form_col_order_id | text | 0 ||| no | The order of the columns|
+| form_col_order_id | int | 0 ||| no | The order of the columns|
 
 ## notice
 ### Bulletin board
